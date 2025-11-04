@@ -39,8 +39,8 @@ public class CourseCategoryServiceImpl implements CourseCategoryService{
 	public Optional<CourseCategory> findCourseCategoryById(Long id) {
 		Optional<CourseCategory> category = categoryRepository.findById(id);
 		if(category.isPresent()) {
-			return category;
-		}
+			return category;}
+
 		return Optional.empty();
 	}
 

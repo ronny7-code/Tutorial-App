@@ -6,8 +6,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class CourseCategoryController {
@@ -16,19 +16,29 @@ public class CourseCategoryController {
     private CourseCategoryService courseCategoryService;
 
     @GetMapping("courseCategory")
-    public String getCourseCategoryForm(Model model){
-        model.addAttribute("courseCategory", new CourseCategory());
+    public String getCourseCategoryForm(){
         return "admin/CourseCategory";
     }
 
     @PostMapping("/submitCourseCategory")
-    public String getCourseCategory(@ModelAttribute("courseCategory") CourseCategory courseCategory, Model model) {
+    public String getCourseCategory(
+            @RequestParam("name") String name,
+            @RequestParam("description") String description,
+            Model model) {
+
+        CourseCategory courseCategory = new CourseCategory();
+        courseCategory.setName(name);
+        courseCategory.setDescription(description);
+
         boolean success = courseCategoryService.saveCourseCategory(courseCategory);
+
         if (success) {
             model.addAttribute("successMsg", "Course Category Added Successfully!");
         } else {
             model.addAttribute("errorMsg", "Course Category cannot be Added!");
         }
-        return "courseCategory";
+
+        return "admin/CourseCategory";
     }
+
 }

@@ -1,801 +1,633 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" isELIgnored="false" %>
-
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>eLearning</title>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="description" content="Unicat project">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/styles_1/bootstrap4/bootstrap.min.css">
-<link href="${pageContext.request.contextPath}/plugins_1/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/plugins_1/OwlCarousel2-2.2.1/owl.carousel.css">
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/plugins_1/OwlCarousel2-2.2.1/owl.theme.default.css">
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/plugins_1/OwlCarousel2-2.2.1/animate.css">
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/styles_1/main_styles.css">
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/styles_1/responsive.css">
+    <meta charset="utf-8">
+    <title>eLearning - Online Education Website</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Free HTML Templates" name="keywords">
+    <meta content="Free HTML Templates" name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="${pageContext.request.contextPath}/Frontend/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="${pageContext.request.contextPath}/Frontend/css/style.css" rel="stylesheet">
 </head>
+
 <body>
-
-<div class="super_container">
-
-	<!-- Header -->
-
-	<%@include file="header.jsp" %>
-
-		<!-- Header Content -->
-		<%@include file="headerContent.jsp" %>
-
-	<!-- Menu -->
-
-	<%@include file="headerContent.jsp" %>
-	
-	
-	<!-- Home -->
-
-	<div class="home">
-		<div class="home_slider_container">
-			
-			<!-- Home Slider -->
-			<div class="owl-carousel owl-theme home_slider">
-				
-				<!-- Home Slider Item -->
-				<div class="owl-item">
-					<div class="home_slider_background" style="background-image:url(images/home_slider_1.jpg)"></div>
-					<div class="home_slider_content">
-						<div class="container">
-							<div class="row">
-								<div class="col text-center">
-									<div class="home_slider_title">The Premium System Education</div>
-									<div class="home_slider_subtitle">Future Of Education Technology</div>
-									<div class="home_slider_form_container">
-										<form action="#" id="home_search_form_1" class="home_search_form d-flex flex-lg-row flex-column align-items-center justify-content-between">
-											<div class="d-flex flex-row align-items-center justify-content-start">
-												<input type="search" class="home_search_input" placeholder="Keyword Search" required="required">
-												<select class="dropdown_item_select home_search_input">
-													<option>Category Courses</option>
-													<option>Category</option>
-													<option>Category</option>
-												</select>
-												<select class="dropdown_item_select home_search_input">
-													<option>Select Price Type</option>
-													<option>Price Type</option>
-													<option>Price Type</option>
-												</select>
-											</div>
-											<button type="submit" class="home_search_button">search</button>
-										</form>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<!-- Home Slider Item -->
-				<div class="owl-item">
-					<div class="home_slider_background" style="background-image:url(images/home_slider_1.jpg)"></div>
-					<div class="home_slider_content">
-						<div class="container">
-							<div class="row">
-								<div class="col text-center">
-									<div class="home_slider_title">The Premium System Education</div>
-									<div class="home_slider_subtitle">Future Of Education Technology</div>
-									<div class="home_slider_form_container">
-										<form action="#" id="home_search_form_2" class="home_search_form d-flex flex-lg-row flex-column align-items-center justify-content-between">
-											<div class="d-flex flex-row align-items-center justify-content-start">
-												<input type="search" class="home_search_input" placeholder="Keyword Search" required="required">
-												<select class="dropdown_item_select home_search_input">
-													<option>Category Courses</option>
-													<option>Category</option>
-													<option>Category</option>
-												</select>
-												<select class="dropdown_item_select home_search_input">
-													<option>Select Price Type</option>
-													<option>Price Type</option>
-													<option>Price Type</option>
-												</select>
-											</div>
-											<button type="submit" class="home_search_button">search</button>
-										</form>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<!-- Home Slider Item -->
-				<div class="owl-item">
-					<div class="home_slider_background" style="background-image:url(images/home_slider_1.jpg)"></div>
-					<div class="home_slider_content">
-						<div class="container">
-							<div class="row">
-								<div class="col text-center">
-									<div class="home_slider_title">The Premium System Education</div>
-									<div class="home_slider_subtitle">Future Of Education Technology</div>
-									<div class="home_slider_form_container">
-										<form action="#" id="home_search_form_3" class="home_search_form d-flex flex-lg-row flex-column align-items-center justify-content-between">
-											<div class="d-flex flex-row align-items-center justify-content-start">
-												<input type="search" class="home_search_input" placeholder="Keyword Search" required="required">
-												<select class="dropdown_item_select home_search_input">
-													<option>Category Courses</option>
-													<option>Category</option>
-													<option>Category</option>
-												</select>
-												<select class="dropdown_item_select home_search_input">
-													<option>Select Price Type</option>
-													<option>Price Type</option>
-													<option>Price Type</option>
-												</select>
-											</div>
-											<button type="submit" class="home_search_button">search</button>
-										</form>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-
-			</div>
-		</div>
-
-		<!-- Home Slider Nav -->
-
-		<div class="home_slider_nav home_slider_prev"><i class="fa fa-angle-left" aria-hidden="true"></i></div>
-		<div class="home_slider_nav home_slider_next"><i class="fa fa-angle-right" aria-hidden="true"></i></div>
-	</div>
-
-	<!-- Features -->
-
-	<div class="features">
-		<div class="container">
-			<div class="row">
-				<div class="col">
-					<div class="section_title_container text-center">
-						<h2 class="section_title">Welcome To Unicat E-Learning</h2>
-						<div class="section_subtitle"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel gravida arcu. Vestibulum feugiat, sapien ultrices fermentum congue, quam velit venenatis sem</p></div>
-					</div>
-				</div>
-			</div>
-			<div class="row features_row">
-				
-				<!-- Features Item -->
-				<div class="col-lg-3 feature_col">
-					<div class="feature text-center trans_400">
-						<div class="feature_icon"><img src="images/icon_1.png" alt=""></div>
-						<h3 class="feature_title">The Experts</h3>
-						<div class="feature_text"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p></div>
-					</div>
-				</div>
-
-				<!-- Features Item -->
-				<div class="col-lg-3 feature_col">
-					<div class="feature text-center trans_400">
-						<div class="feature_icon"><img src="images/icon_2.png" alt=""></div>
-						<h3 class="feature_title">Book & Library</h3>
-						<div class="feature_text"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p></div>
-					</div>
-				</div>
-
-				<!-- Features Item -->
-				<div class="col-lg-3 feature_col">
-					<div class="feature text-center trans_400">
-						<div class="feature_icon"><img src="images/icon_3.png" alt=""></div>
-						<h3 class="feature_title">Best Courses</h3>
-						<div class="feature_text"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p></div>
-					</div>
-				</div>
-
-				<!-- Features Item -->
-				<div class="col-lg-3 feature_col">
-					<div class="feature text-center trans_400">
-						<div class="feature_icon"><img src="images/icon_4.png" alt=""></div>
-						<h3 class="feature_title">Award & Reward</h3>
-						<div class="feature_text"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p></div>
-					</div>
-				</div>
-
-			</div>
-		</div>
-	</div>
-
-	<!-- Popular Courses -->
-
-	<div class="courses">
-		<div class="section_background parallax-window" data-parallax="scroll" data-image-src="images/courses_background.jpg" data-speed="0.8"></div>
-		<div class="container">
-			<div class="row">
-				<div class="col">
-					<div class="section_title_container text-center">
-						<h2 class="section_title">Popular Online Courses</h2>
-						<div class="section_subtitle"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel gravida arcu. Vestibulum feugiat, sapien ultrices fermentum congue, quam velit venenatis sem</p></div>
-					</div>
-				</div>
-			</div>
-			<div class="row courses_row">
-				
-				<!-- Course -->
-				<div class="col-lg-4 course_col">
-					<div class="course">
-						<div class="course_image"><img src="images/course_1.jpg" alt=""></div>
-						<div class="course_body">
-							<h3 class="course_title"><a href="course.html">Software Training</a></h3>
-							<div class="course_teacher">Mr. John Taylor</div>
-							<div class="course_text">
-								<p>Lorem ipsum dolor sit amet, consectetur adipi elitsed do eiusmod tempor</p>
-							</div>
-						</div>
-						<div class="course_footer">
-							<div class="course_footer_content d-flex flex-row align-items-center justify-content-start">
-								<div class="course_info">
-									<i class="fa fa-graduation-cap" aria-hidden="true"></i>
-									<span>20 Student</span>
-								</div>
-								<div class="course_info">
-									<i class="fa fa-star" aria-hidden="true"></i>
-									<span>5 Ratings</span>
-								</div>
-								<div class="course_price ml-auto">$130</div>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<!-- Course -->
-				<div class="col-lg-4 course_col">
-					<div class="course">
-						<div class="course_image"><img src="images/course_2.jpg" alt=""></div>
-						<div class="course_body">
-							<h3 class="course_title"><a href="course.html">Developing Mobile Apps</a></h3>
-							<div class="course_teacher">Ms. Lucius</div>
-							<div class="course_text">
-								<p>Lorem ipsum dolor sit amet, consectetur adipi elitsed do eiusmod tempor</p>
-							</div>
-						</div>
-						<div class="course_footer">
-							<div class="course_footer_content d-flex flex-row align-items-center justify-content-start">
-								<div class="course_info">
-									<i class="fa fa-graduation-cap" aria-hidden="true"></i>
-									<span>20 Student</span>
-								</div>
-								<div class="course_info">
-									<i class="fa fa-star" aria-hidden="true"></i>
-									<span>5 Ratings</span>
-								</div>
-								<div class="course_price ml-auto">Free</div>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<!-- Course -->
-				<div class="col-lg-4 course_col">
-					<div class="course">
-						<div class="course_image"><img src="images/course_3.jpg" alt=""></div>
-						<div class="course_body">
-							<h3 class="course_title"><a href="course.html">Starting a Startup</a></h3>
-							<div class="course_teacher">Mr. Charles</div>
-							<div class="course_text">
-								<p>Lorem ipsum dolor sit amet, consectetur adipi elitsed do eiusmod tempor</p>
-							</div>
-						</div>
-						<div class="course_footer">
-							<div class="course_footer_content d-flex flex-row align-items-center justify-content-start">
-								<div class="course_info">
-									<i class="fa fa-graduation-cap" aria-hidden="true"></i>
-									<span>20 Student</span>
-								</div>
-								<div class="course_info">
-									<i class="fa fa-star" aria-hidden="true"></i>
-									<span>5 Ratings</span>
-								</div>
-								<div class="course_price ml-auto"><span>$320</span>$220</div>
-							</div>
-						</div>
-					</div>
-				</div>
-
-			</div>
-			<div class="row">
-				<div class="col">
-					<div class="courses_button trans_200"><a href="#">view all courses</a></div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<!-- Counter -->
-
-	<div class="counter">
-		<div class="counter_background" style="background-image:url(images/counter_background.jpg)"></div>
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-6">
-					<div class="counter_content">
-						<h2 class="counter_title">Register Now</h2>
-						<div class="counter_text"><p>Simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dumy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p></div>
-
-						<!-- Milestones -->
-
-						<div class="milestones d-flex flex-md-row flex-column align-items-center justify-content-between">
-							
-							<!-- Milestone -->
-							<div class="milestone">
-								<div class="milestone_counter" data-end-value="15">0</div>
-								<div class="milestone_text">years</div>
-							</div>
-
-							<!-- Milestone -->
-							<div class="milestone">
-								<div class="milestone_counter" data-end-value="120" data-sign-after="k">0</div>
-								<div class="milestone_text">years</div>
-							</div>
-
-							<!-- Milestone -->
-							<div class="milestone">
-								<div class="milestone_counter" data-end-value="670" data-sign-after="+">0</div>
-								<div class="milestone_text">years</div>
-							</div>
-
-							<!-- Milestone -->
-							<div class="milestone">
-								<div class="milestone_counter" data-end-value="320">0</div>
-								<div class="milestone_text">years</div>
-							</div>
-
-						</div>
-					</div>
-
-				</div>
-			</div>
-
-			<div class="counter_form">
-				<div class="row fill_height">
-					<div class="col fill_height">
-						<form class="counter_form_content d-flex flex-column align-items-center justify-content-center" action="#">
-							<div class="counter_form_title">courses now</div>
-							<input type="text" class="counter_input" placeholder="Your Name:" required="required">
-							<input type="tel" class="counter_input" placeholder="Phone:" required="required">
-							<select name="counter_select" id="counter_select" class="counter_input counter_options">
-								<option>Choose Subject</option>
-								<option>Subject</option>
-								<option>Subject</option>
-								<option>Subject</option>
-							</select>
-							<textarea class="counter_input counter_text_input" placeholder="Message:" required="required"></textarea>
-							<button type="submit" class="counter_form_button">submit now</button>
-						</form>
-					</div>
-				</div>
-			</div>
-
-		</div>
-	</div>
-
-	<!-- Events -->
-
-	<div class="events">
-		<div class="container">
-			<div class="row">
-				<div class="col">
-					<div class="section_title_container text-center">
-						<h2 class="section_title">Upcoming events</h2>
-						<div class="section_subtitle"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel gravida arcu. Vestibulum feugiat, sapien ultrices fermentum congue, quam velit venenatis sem</p></div>
-					</div>
-				</div>
-			</div>
-			<div class="row events_row">
-
-				<!-- Event -->
-				<div class="col-lg-4 event_col">
-					<div class="event event_left">
-						<div class="event_image"><img src="images/event_1.jpg" alt=""></div>
-						<div class="event_body d-flex flex-row align-items-start justify-content-start">
-							<div class="event_date">
-								<div class="d-flex flex-column align-items-center justify-content-center trans_200">
-									<div class="event_day trans_200">21</div>
-									<div class="event_month trans_200">Aug</div>
-								</div>
-							</div>
-							<div class="event_content">
-								<div class="event_title"><a href="#">Which Country Handles Student Debt?</a></div>
-								<div class="event_info_container">
-									<div class="event_info"><i class="fa fa-clock-o" aria-hidden="true"></i><span>15.00 - 19.30</span></div>
-									<div class="event_info"><i class="fa fa-map-marker" aria-hidden="true"></i><span>25 New York City</span></div>
-									<div class="event_text">
-										<p>Policy analysts generally agree on a need for reform, but not on which path...</p>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<!-- Event -->
-				<div class="col-lg-4 event_col">
-					<div class="event event_mid">
-						<div class="event_image"><img src="images/event_2.jpg" alt=""></div>
-						<div class="event_body d-flex flex-row align-items-start justify-content-start">
-							<div class="event_date">
-								<div class="d-flex flex-column align-items-center justify-content-center trans_200">
-									<div class="event_day trans_200">27</div>
-									<div class="event_month trans_200">Aug</div>
-								</div>
-							</div>
-							<div class="event_content">
-								<div class="event_title"><a href="#">Repaying your student loans (Winter 2017-2018)</a></div>
-								<div class="event_info_container">
-									<div class="event_info"><i class="fa fa-clock-o" aria-hidden="true"></i><span>09.00 - 17.30</span></div>
-									<div class="event_info"><i class="fa fa-map-marker" aria-hidden="true"></i><span>25 Brooklyn City</span></div>
-									<div class="event_text">
-										<p>This Consumer Action News issue covers topics now being debated before...</p>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<!-- Event -->
-				<div class="col-lg-4 event_col">
-					<div class="event event_right">
-						<div class="event_image"><img src="images/event_3.jpg" alt=""></div>
-						<div class="event_body d-flex flex-row align-items-start justify-content-start">
-							<div class="event_date">
-								<div class="d-flex flex-column align-items-center justify-content-center trans_200">
-									<div class="event_day trans_200">01</div>
-									<div class="event_month trans_200">Sep</div>
-								</div>
-							</div>
-							<div class="event_content">
-								<div class="event_title"><a href="#">Alternative data and financial inclusion</a></div>
-								<div class="event_info_container">
-									<div class="event_info"><i class="fa fa-clock-o" aria-hidden="true"></i><span>13.00 - 18.30</span></div>
-									<div class="event_info"><i class="fa fa-map-marker" aria-hidden="true"></i><span>25 New York City</span></div>
-									<div class="event_text">
-										<p>Policy analysts generally agree on a need for reform, but not on which path...</p>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-
-			</div>
-		</div>
-	</div>
-
-	<!-- Team -->
-
-	<div class="team">
-		<div class="team_background parallax-window" data-parallax="scroll" data-image-src="images/team_background.jpg" data-speed="0.8"></div>
-		<div class="container">
-			<div class="row">
-				<div class="col">
-					<div class="section_title_container text-center">
-						<h2 class="section_title">The Best Tutors in Town</h2>
-						<div class="section_subtitle"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel gravida arcu. Vestibulum feugiat, sapien ultrices fermentum congue, quam velit venenatis sem</p></div>
-					</div>
-				</div>
-			</div>
-			<div class="row team_row">
-				
-				<!-- Team Item -->
-				<div class="col-lg-3 col-md-6 team_col">
-					<div class="team_item">
-						<div class="team_image"><img src="images/team_1.jpg" alt=""></div>
-						<div class="team_body">
-							<div class="team_title"><a href="#">Jacke Masito</a></div>
-							<div class="team_subtitle">Marketing & Management</div>
-							<div class="social_list">
-								<ul>
-									<li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-									<li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-									<li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<!-- Team Item -->
-				<div class="col-lg-3 col-md-6 team_col">
-					<div class="team_item">
-						<div class="team_image"><img src="images/team_2.jpg" alt=""></div>
-						<div class="team_body">
-							<div class="team_title"><a href="#">William James</a></div>
-							<div class="team_subtitle">Designer & Website</div>
-							<div class="social_list">
-								<ul>
-									<li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-									<li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-									<li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<!-- Team Item -->
-				<div class="col-lg-3 col-md-6 team_col">
-					<div class="team_item">
-						<div class="team_image"><img src="images/team_3.jpg" alt=""></div>
-						<div class="team_body">
-							<div class="team_title"><a href="#">John Tyler</a></div>
-							<div class="team_subtitle">Quantum mechanics</div>
-							<div class="social_list">
-								<ul>
-									<li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-									<li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-									<li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<!-- Team Item -->
-				<div class="col-lg-3 col-md-6 team_col">
-					<div class="team_item">
-						<div class="team_image"><img src="images/team_4.jpg" alt=""></div>
-						<div class="team_body">
-							<div class="team_title"><a href="#">Veronica Vahn</a></div>
-							<div class="team_subtitle">Math & Physics</div>
-							<div class="social_list">
-								<ul>
-									<li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-									<li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-									<li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
-
-			</div>
-		</div>
-	</div>
-
-	<!-- Latest News -->
-
-	<div class="news">
-		<div class="container">
-			<div class="row">
-				<div class="col">
-					<div class="section_title_container text-center">
-						<h2 class="section_title">Latest News</h2>
-						<div class="section_subtitle"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel gravida arcu. Vestibulum feugiat, sapien ultrices fermentum congue, quam velit venenatis sem</p></div>
-					</div>
-				</div>
-			</div>
-			<div class="row news_row">
-				<div class="col-lg-7 news_col">
-					
-					<!-- News Post Large -->
-					<div class="news_post_large_container">
-						<div class="news_post_large">
-							<div class="news_post_image"><img src="images/news_1.jpg" alt=""></div>
-							<div class="news_post_large_title"><a href="blog_single.html">Here’s What You Need to Know About Online Testing for the ACT and SAT</a></div>
-							<div class="news_post_meta">
-								<ul>
-									<li><a href="#">admin</a></li>
-									<li><a href="#">november 11, 2017</a></li>
-								</ul>
-							</div>
-							<div class="news_post_text">
-								<p>Policy analysts generally agree on a need for reform, but not on which path policymakers should take. Can America learn anything from other nations...</p>
-							</div>
-							<div class="news_post_link"><a href="blog_single.html">read more</a></div>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-lg-5 news_col">
-					<div class="news_posts_small">
-
-						<!-- News Posts Small -->
-						<div class="news_post_small">
-							<div class="news_post_small_title"><a href="blog_single.html">Home-based business insurance issue (Spring 2017 - 2018)</a></div>
-							<div class="news_post_meta">
-								<ul>
-									<li><a href="#">admin</a></li>
-									<li><a href="#">november 11, 2017</a></li>
-								</ul>
-							</div>
-						</div>
-
-						<!-- News Posts Small -->
-						<div class="news_post_small">
-							<div class="news_post_small_title"><a href="blog_single.html">2018 Fall Issue: Credit Card Comparison Site Survey (Summer 2018)</a></div>
-							<div class="news_post_meta">
-								<ul>
-									<li><a href="#">admin</a></li>
-									<li><a href="#">november 11, 2017</a></li>
-								</ul>
-							</div>
-						</div>
-
-						<!-- News Posts Small -->
-						<div class="news_post_small">
-							<div class="news_post_small_title"><a href="blog_single.html">Cuentas de cheques gratuitas una encuesta de Consumer Action</a></div>
-							<div class="news_post_meta">
-								<ul>
-									<li><a href="#">admin</a></li>
-									<li><a href="#">november 11, 2017</a></li>
-								</ul>
-							</div>
-						</div>
-
-						<!-- News Posts Small -->
-						<div class="news_post_small">
-							<div class="news_post_small_title"><a href="blog_single.html">Troubled borrowers have fewer repayment or forgiveness options</a></div>
-							<div class="news_post_meta">
-								<ul>
-									<li><a href="#">admin</a></li>
-									<li><a href="#">november 11, 2017</a></li>
-								</ul>
-							</div>
-						</div>
-
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<!-- Newsletter -->
-
-	<div class="newsletter">
-		<div class="newsletter_background parallax-window" data-parallax="scroll" data-image-src="images/newsletter.jpg" data-speed="0.8"></div>
-		<div class="container">
-			<div class="row">
-				<div class="col">
-					<div class="newsletter_container d-flex flex-lg-row flex-column align-items-center justify-content-start">
-
-						<!-- Newsletter Content -->
-						<div class="newsletter_content text-lg-left text-center">
-							<div class="newsletter_title">sign up for news and offers</div>
-							<div class="newsletter_subtitle">Subcribe to lastest smartphones news & great deals we offer</div>
-						</div>
-
-						<!-- Newsletter Form -->
-						<div class="newsletter_form_container ml-lg-auto">
-							<form action="#" id="newsletter_form" class="newsletter_form d-flex flex-row align-items-center justify-content-center">
-								<input type="email" class="newsletter_input" placeholder="Your Email" required="required">
-								<button type="submit" class="newsletter_button">subscribe</button>
-							</form>
-						</div>
-
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<!-- Footer -->
-
-	<footer class="footer">
-		<div class="footer_background" style="background-image:url(images/footer_background.png)"></div>
-		<div class="container">
-			<div class="row footer_row">
-				<div class="col">
-					<div class="footer_content">
-						<div class="row">
-
-							<div class="col-lg-3 footer_col">
-					
-								<!-- Footer About -->
-								<div class="footer_section footer_about">
-									<div class="footer_logo_container">
-										<a href="#">
-											<div class="footer_logo_text">Unic<span>at</span></div>
-										</a>
-									</div>
-									<div class="footer_about_text">
-										<p>Lorem ipsum dolor sit ametium, consectetur adipiscing elit.</p>
-									</div>
-									<div class="footer_social">
-										<ul>
-											<li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-											<li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
-											<li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-											<li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-										</ul>
-									</div>
-								</div>
-								
-							</div>
-
-							<div class="col-lg-3 footer_col">
-					
-								<!-- Footer Contact -->
-								<div class="footer_section footer_contact">
-									<div class="footer_title">Contact Us</div>
-									<div class="footer_contact_info">
-										<ul>
-											<li>Email: Info.deercreative@gmail.com</li>
-											<li>Phone:  +(88) 111 555 666</li>
-											<li>40 Baria Sreet 133/2 New York City, United States</li>
-										</ul>
-									</div>
-								</div>
-								
-							</div>
-
-							<div class="col-lg-3 footer_col">
-					
-								<!-- Footer links -->
-								<div class="footer_section footer_links">
-									<div class="footer_title">Contact Us</div>
-									<div class="footer_links_container">
-										<ul>
-											<li><a href="index.html">Home</a></li>
-											<li><a href="about.html">About</a></li>
-											<li><a href="contact.html">Contact</a></li>
-											<li><a href="#">Features</a></li>
-											<li><a href="courses.html">Courses</a></li>
-											<li><a href="#">Events</a></li>
-											<li><a href="#">Gallery</a></li>
-											<li><a href="#">FAQs</a></li>
-										</ul>
-									</div>
-								</div>
-								
-							</div>
-
-							<div class="col-lg-3 footer_col clearfix">
-					
-								<!-- Footer links -->
-								<div class="footer_section footer_mobile">
-									<div class="footer_title">Mobile</div>
-									<div class="footer_mobile_content">
-										<div class="footer_image"><a href="#"><img src="${pageContext.request.contextPath}/images/mobile_1.png" alt=""></a></div>
-										<div class="footer_image"><a href="#"><img src="${pageContext.request.contextPath}/images/mobile_2.png" alt=""></a></div>
-									</div>
-								</div>
-								
-							</div>
-
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<div class="row copyright_row">
-				<div class="col">
-					<div class="copyright d-flex flex-lg-row flex-column align-items-center justify-content-start">
-						<div class="cr_text"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></div>
-						<div class="ml-lg-auto cr_links">
-							<ul class="cr_list">
-								<li><a href="#">Copyright notification</a></li>
-								<li><a href="#">Terms of Use</a></li>
-								<li><a href="#">Privacy Policy</a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</footer>
-</div>
-
-<script src="${pageContext.request.contextPath}/js/jquery-3.2.1.min.js"></script>
-<script src="${pageContext.request.contextPath}/styles_1/bootstrap4/popper.js"></script>
-<script src="${pageContext.request.contextPath}/styles_1/bootstrap4/bootstrap.min.js"></script>
-<script src="${pageContext.request.contextPath}/plugins_1/greensock/TweenMax.min.js"></script>
-<script src="${pageContext.request.contextPath}/plugins_1/greensock/TimelineMax.min.js"></script>
-<script src="${pageContext.request.contextPath}/plugins_1/scrollmagic/ScrollMagic.min.js"></script>
-<script src="${pageContext.request.contextPath}/plugins_1/greensock/animation.gsap.min.js"></script>
-<script src="${pageContext.request.contextPath}/plugins_1/greensock/ScrollToPlugin.min.js"></script>
-<script src="${pageContext.request.contextPath}/plugins_1/OwlCarousel2-2.2.1/owl.carousel.js"></script>
-<script src="${pageContext.request.contextPath}/plugins_1/easing/easing.js"></script>
-<script src="${pageContext.request.contextPath}/plugins_1/parallax-js-master/parallax.min.js"></script>
-<script src="${pageContext.request.contextPath}/js/custom.js"></script>
+    <!-- Topbar Start -->
+    <div class="container-fluid bg-dark">
+        <div class="row py-2 px-lg-5">
+            <div class="col-lg-6 text-center text-lg-left mb-2 mb-lg-0">
+                <div class="d-inline-flex align-items-center text-white">
+                    <small><i class="fa fa-phone-alt mr-2"></i>+012 345 6789</small>
+                    <small class="px-3">|</small>
+                    <small><i class="fa fa-envelope mr-2"></i>info@example.com</small>
+                </div>
+            </div>
+            <div class="col-lg-6 text-center text-lg-right">
+                <div class="d-inline-flex align-items-center">
+                    <a class="text-white px-2" href="">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a class="text-white px-2" href="">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a class="text-white px-2" href="">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a class="text-white px-2" href="">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a class="text-white pl-2" href="">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Topbar End -->
+
+
+    <!-- Navbar Start -->
+    <div class="container-fluid p-0">
+        <nav class="navbar navbar-expand-lg bg-white navbar-light py-3 py-lg-0 px-lg-5">
+            <a href="index.html" class="navbar-brand ml-lg-3">
+                <h1 class="m-0 text-uppercase text-primary"><i class="fa fa-book-reader mr-3"></i>eLearning Hub</h1>
+            </a>
+            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-between px-lg-3" id="navbarCollapse">
+                <div class="navbar-nav mx-auto py-0">
+                    <a href="index.html" class="nav-item nav-link active">Home</a>
+                    <a href="about.html" class="nav-item nav-link">About</a>
+                    <a href="course.html" class="nav-item nav-link">Courses</a>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
+                        <div class="dropdown-menu m-0">
+                            <a href="detail.html" class="dropdown-item">Course Detail</a>
+                            <a href="feature.html" class="dropdown-item">Our Features</a>
+                            <a href="team.html" class="dropdown-item">Instructors</a>
+                            <a href="testimonial.html" class="dropdown-item">Testimonial</a>
+                        </div>
+                    </div>
+                    <a href="contact.html" class="nav-item nav-link">Contact</a>
+                </div>
+                <a href="" class="btn btn-primary py-2 px-4 d-none d-lg-block">Join Us</a>
+            </div>
+        </nav>
+    </div>
+    <!-- Navbar End -->
+
+
+    <!-- Header Start -->
+    <div class="jumbotron jumbotron-fluid position-relative overlay-bottom" style="margin-bottom: 90px;">
+        <div class="container text-center my-5 py-5">
+            <h1 class="text-white mt-4 mb-4">Learn From Home</h1>
+            <h1 class="text-white display-1 mb-5">Education Courses</h1>
+            <div class="mx-auto mb-5" style="width: 100%; max-width: 600px;">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <button class="btn btn-outline-light bg-white text-body px-4 dropdown-toggle" type="button" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">Courses</button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">Courses 1</a>
+                            <a class="dropdown-item" href="#">Courses 2</a>
+                            <a class="dropdown-item" href="#">Courses 3</a>
+                        </div>
+                    </div>
+                    <input type="text" class="form-control border-light" style="padding: 30px 25px;" placeholder="Keyword">
+                    <div class="input-group-append">
+                        <button class="btn btn-secondary px-4 px-lg-5">Search</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Header End -->
+
+
+    <!-- About Start -->
+    <div class="container-fluid py-5">
+        <div class="container py-5">
+            <div class="row">
+                <div class="col-lg-5 mb-5 mb-lg-0" style="min-height: 500px;">
+                    <div class="position-relative h-100">
+                        <img class="position-absolute w-100 h-100" src="${pageContext.request.contextPath}/Frontend/img/about.jpg" style="object-fit: cover;">
+                    </div>
+                </div>
+                <div class="col-lg-7">
+                    <div class="section-title position-relative mb-4">
+                        <h6 class="d-inline-block position-relative text-secondary text-uppercase pb-2">About Us</h6>
+                        <h1 class="display-4">First Choice For Online Education Anywhere</h1>
+                    </div>
+                    <p>Tempor erat elitr at rebum at at clita aliquyam consetetur. Diam dolor diam ipsum et, tempor voluptua sit consetetur sit. Aliquyam diam amet diam et eos sadipscing labore. Clita erat ipsum et lorem et sit, sed stet no labore lorem sit. Sanctus clita duo justo et tempor consetetur takimata eirmod, dolores takimata consetetur invidunt magna dolores aliquyam dolores dolore. Amet erat amet et magna</p>
+                    <div class="row pt-3 mx-0">
+                        <div class="col-3 px-0">
+                            <div class="bg-success text-center p-4">
+                                <h1 class="text-white" data-toggle="counter-up">123</h1>
+                                <h6 class="text-uppercase text-white">Available<span class="d-block">Subjects</span></h6>
+                            </div>
+                        </div>
+                        <div class="col-3 px-0">
+                            <div class="bg-primary text-center p-4">
+                                <h1 class="text-white" data-toggle="counter-up">1234</h1>
+                                <h6 class="text-uppercase text-white">Online<span class="d-block">Courses</span></h6>
+                            </div>
+                        </div>
+                        <div class="col-3 px-0">
+                            <div class="bg-secondary text-center p-4">
+                                <h1 class="text-white" data-toggle="counter-up">123</h1>
+                                <h6 class="text-uppercase text-white">Skilled<span class="d-block">Instructors</span></h6>
+                            </div>
+                        </div>
+                        <div class="col-3 px-0">
+                            <div class="bg-warning text-center p-4">
+                                <h1 class="text-white" data-toggle="counter-up">1234</h1>
+                                <h6 class="text-uppercase text-white">Happy<span class="d-block">Students</span></h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- About End -->
+
+
+    <!-- Feature Start -->
+    <div class="container-fluid bg-image" style="margin: 90px 0;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-7 my-5 pt-5 pb-lg-5">
+                    <div class="section-title position-relative mb-4">
+                        <h6 class="d-inline-block position-relative text-secondary text-uppercase pb-2">Why Choose Us?</h6>
+                        <h1 class="display-4">Why You Should Start Learning with Us?</h1>
+                    </div>
+                    <p class="mb-4 pb-2">Aliquyam accusam clita nonumy ipsum sit sea clita ipsum clita, ipsum dolores amet voluptua duo dolores et sit ipsum rebum, sadipscing et erat eirmod diam kasd labore clita est. Diam sanctus gubergren sit rebum clita amet.</p>
+                    <div class="d-flex mb-3">
+                        <div class="btn-icon bg-primary mr-4">
+                            <i class="fa fa-2x fa-graduation-cap text-white"></i>
+                        </div>
+                        <div class="mt-n1">
+                            <h4>Skilled Instructors</h4>
+                            <p>Labore rebum duo est Sit dolore eos sit tempor eos stet, vero vero clita magna kasd no nonumy et eos dolor magna ipsum.</p>
+                        </div>
+                    </div>
+                    <div class="d-flex mb-3">
+                        <div class="btn-icon bg-secondary mr-4">
+                            <i class="fa fa-2x fa-certificate text-white"></i>
+                        </div>
+                        <div class="mt-n1">
+                            <h4>International Certificate</h4>
+                            <p>Labore rebum duo est Sit dolore eos sit tempor eos stet, vero vero clita magna kasd no nonumy et eos dolor magna ipsum.</p>
+                        </div>
+                    </div>
+                    <div class="d-flex">
+                        <div class="btn-icon bg-warning mr-4">
+                            <i class="fa fa-2x fa-book-reader text-white"></i>
+                        </div>
+                        <div class="mt-n1">
+                            <h4>Online Classes</h4>
+                            <p class="m-0">Labore rebum duo est Sit dolore eos sit tempor eos stet, vero vero clita magna kasd no nonumy et eos dolor magna ipsum.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-5" style="min-height: 500px;">
+                    <div class="position-relative h-100">
+                        <img class="position-absolute w-100 h-100" src="${pageContext.request.contextPath}/Frontend/img/feature.jpg" style="object-fit: cover;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Feature Start -->
+
+
+    <!-- Courses Start -->
+    <div class="container-fluid px-0 py-5">
+        <div class="row mx-0 justify-content-center pt-5">
+            <div class="col-lg-6">
+                <div class="section-title text-center position-relative mb-4">
+                    <h6 class="d-inline-block position-relative text-secondary text-uppercase pb-2">Our Courses</h6>
+                    <h1 class="display-4">Checkout New Releases Of Our Courses</h1>
+                </div>
+            </div>
+        </div>
+        <div class="owl-carousel courses-carousel">
+            <div class="courses-item position-relative">
+                <img class="img-fluid" src="${pageContext.request.contextPath}/Frontend/img/courses-1.jpg" alt="">
+                <div class="courses-text">
+                    <h4 class="text-center text-white px-3">Web design & development courses for beginners</h4>
+                    <div class="border-top w-100 mt-3">
+                        <div class="d-flex justify-content-between p-4">
+                            <span class="text-white"><i class="fa fa-user mr-2"></i>Jhon Doe</span>
+                            <span class="text-white"><i class="fa fa-star mr-2"></i>4.5 <small>(250)</small></span>
+                        </div>
+                    </div>
+                    <div class="w-100 bg-white text-center p-4" >
+                        <a class="btn btn-primary" href="detail.html">Course Detail</a>
+                    </div>
+                </div>
+            </div>
+            <div class="courses-item position-relative">
+                <img class="img-fluid" src="${pageContext.request.contextPath}/Frontend/img/courses-2.jpg" alt="">
+                <div class="courses-text">
+                    <h4 class="text-center text-white px-3">Web design & development courses for beginners</h4>
+                    <div class="border-top w-100 mt-3">
+                        <div class="d-flex justify-content-between p-4">
+                            <span class="text-white"><i class="fa fa-user mr-2"></i>Jhon Doe</span>
+                            <span class="text-white"><i class="fa fa-star mr-2"></i>4.5 <small>(250)</small></span>
+                        </div>
+                    </div>
+                    <div class="w-100 bg-white text-center p-4" >
+                        <a class="btn btn-primary" href="detail.html">Course Detail</a>
+                    </div>
+                </div>
+            </div>
+            <div class="courses-item position-relative">
+                <img class="img-fluid" src="${pageContext.request.contextPath}/Frontend/img/courses-3.jpg" alt="">
+                <div class="courses-text">
+                    <h4 class="text-center text-white px-3">Web design & development courses for beginners</h4>
+                    <div class="border-top w-100 mt-3">
+                        <div class="d-flex justify-content-between p-4">
+                            <span class="text-white"><i class="fa fa-user mr-2"></i>Jhon Doe</span>
+                            <span class="text-white"><i class="fa fa-star mr-2"></i>4.5 <small>(250)</small></span>
+                        </div>
+                    </div>
+                    <div class="w-100 bg-white text-center p-4" >
+                        <a class="btn btn-primary" href="detail.html">Course Detail</a>
+                    </div>
+                </div>
+            </div>
+            <div class="courses-item position-relative">
+                <img class="img-fluid" src="${pageContext.request.contextPath}/Frontend/img/courses-4.jpg" alt="">
+                <div class="courses-text">
+                    <h4 class="text-center text-white px-3">Web design & development courses for beginners</h4>
+                    <div class="border-top w-100 mt-3">
+                        <div class="d-flex justify-content-between p-4">
+                            <span class="text-white"><i class="fa fa-user mr-2"></i>Jhon Doe</span>
+                            <span class="text-white"><i class="fa fa-star mr-2"></i>4.5 <small>(250)</small></span>
+                        </div>
+                    </div>
+                    <div class="w-100 bg-white text-center p-4" >
+                        <a class="btn btn-primary" href="detail.html">Course Detail</a>
+                    </div>
+                </div>
+            </div>
+            <div class="courses-item position-relative">
+                <img class="img-fluid" src="${pageContext.request.contextPath}/Frontend/img/courses-5.jpg" alt="">
+                <div class="courses-text">
+                    <h4 class="text-center text-white px-3">Web design & development courses for beginners</h4>
+                    <div class="border-top w-100 mt-3">
+                        <div class="d-flex justify-content-between p-4">
+                            <span class="text-white"><i class="fa fa-user mr-2"></i>Jhon Doe</span>
+                            <span class="text-white"><i class="fa fa-star mr-2"></i>4.5 <small>(250)</small></span>
+                        </div>
+                    </div>
+                    <div class="w-100 bg-white text-center p-4" >
+                        <a class="btn btn-primary" href="detail.html">Course Detail</a>
+                    </div>
+                </div>
+            </div>
+            <div class="courses-item position-relative">
+                <img class="img-fluid" src="${pageContext.request.contextPath}/Frontend/img/courses-6.jpg" alt="">
+                <div class="courses-text">
+                    <h4 class="text-center text-white px-3">Web design & development courses for beginners</h4>
+                    <div class="border-top w-100 mt-3">
+                        <div class="d-flex justify-content-between p-4">
+                            <span class="text-white"><i class="fa fa-user mr-2"></i>Jhon Doe</span>
+                            <span class="text-white"><i class="fa fa-star mr-2"></i>4.5 <small>(250)</small></span>
+                        </div>
+                    </div>
+                    <div class="w-100 bg-white text-center p-4" >
+                        <a class="btn btn-primary" href="detail.html">Course Detail</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center bg-image mx-0 mb-5">
+            <div class="col-lg-6 py-5">
+                <div class="bg-white p-5 my-5">
+                    <h1 class="text-center mb-4">30% Off For New Students</h1>
+                    <form>
+                        <div class="form-row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control bg-light border-0" placeholder="Your Name" style="padding: 30px 20px;">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <input type="email" class="form-control bg-light border-0" placeholder="Your Email" style="padding: 30px 20px;">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <select class="custom-select bg-light border-0 px-3" style="height: 60px;">
+                                        <option selected>Select A courses</option>
+                                        <option value="1">courses 1</option>
+                                        <option value="2">courses 1</option>
+                                        <option value="3">courses 1</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <button class="btn btn-primary btn-block" type="submit" style="height: 60px;">Sign Up Now</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Courses End -->
+
+
+    <!-- Team Start -->
+    <div class="container-fluid py-5">
+        <div class="container py-5">
+            <div class="section-title text-center position-relative mb-5">
+                <h6 class="d-inline-block position-relative text-secondary text-uppercase pb-2">Instructors</h6>
+                <h1 class="display-4">Meet Our Instructors</h1>
+            </div>
+            <div class="owl-carousel team-carousel position-relative" style="padding: 0 30px;">
+                <div class="team-item">
+                    <img class="img-fluid w-100" src="${pageContext.request.contextPath}/Frontend/img/team-1.jpg" alt="">
+                    <div class="bg-light text-center p-4">
+                        <h5 class="mb-3">Instructor Name</h5>
+                        <p class="mb-2">Web Design & Development</p>
+                        <div class="d-flex justify-content-center">
+                            <a class="mx-1 p-1" href="#"><i class="fab fa-twitter"></i></a>
+                            <a class="mx-1 p-1" href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a class="mx-1 p-1" href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a class="mx-1 p-1" href="#"><i class="fab fa-instagram"></i></a>
+                            <a class="mx-1 p-1" href="#"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-item">
+                    <img class="img-fluid w-100" src="${pageContext.request.contextPath}/Frontend/img/team-2.jpg" alt="">
+                    <div class="bg-light text-center p-4">
+                        <h5 class="mb-3">Instructor Name</h5>
+                        <p class="mb-2">Web Design & Development</p>
+                        <div class="d-flex justify-content-center">
+                            <a class="mx-1 p-1" href="#"><i class="fab fa-twitter"></i></a>
+                            <a class="mx-1 p-1" href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a class="mx-1 p-1" href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a class="mx-1 p-1" href="#"><i class="fab fa-instagram"></i></a>
+                            <a class="mx-1 p-1" href="#"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-item">
+                    <img class="img-fluid w-100" src="${pageContext.request.contextPath}/Frontend/img/team-3.jpg" alt="">
+                    <div class="bg-light text-center p-4">
+                        <h5 class="mb-3">Instructor Name</h5>
+                        <p class="mb-2">Web Design & Development</p>
+                        <div class="d-flex justify-content-center">
+                            <a class="mx-1 p-1" href="#"><i class="fab fa-twitter"></i></a>
+                            <a class="mx-1 p-1" href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a class="mx-1 p-1" href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a class="mx-1 p-1" href="#"><i class="fab fa-instagram"></i></a>
+                            <a class="mx-1 p-1" href="#"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-item">
+                    <img class="img-fluid w-100" src="${pageContext.request.contextPath}/Frontend/img/team-4.jpg" alt="">
+                    <div class="bg-light text-center p-4">
+                        <h5 class="mb-3">Instructor Name</h5>
+                        <p class="mb-2">Web Design & Development</p>
+                        <div class="d-flex justify-content-center">
+                            <a class="mx-1 p-1" href="#"><i class="fab fa-twitter"></i></a>
+                            <a class="mx-1 p-1" href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a class="mx-1 p-1" href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a class="mx-1 p-1" href="#"><i class="fab fa-instagram"></i></a>
+                            <a class="mx-1 p-1" href="#"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Team End -->
+
+
+    <!-- Testimonial Start -->
+    <div class="container-fluid bg-image py-5" style="margin: 90px 0;">
+        <div class="container py-5">
+            <div class="row align-items-center">
+                <div class="col-lg-5 mb-5 mb-lg-0">
+                    <div class="section-title position-relative mb-4">
+                        <h6 class="d-inline-block position-relative text-secondary text-uppercase pb-2">Testimonial</h6>
+                        <h1 class="display-4">What Say Our Students</h1>
+                    </div>
+                    <p class="m-0">Dolor est dolores et nonumy sit labore dolores est sed rebum amet, justo duo ipsum sanctus dolore magna rebum sit et. Diam lorem ea sea at. Nonumy et at at sed justo est nonumy tempor. Vero sea ea eirmod, elitr ea amet diam ipsum at amet. Erat sed stet eos ipsum diam</p>
+                </div>
+                <div class="col-lg-7">
+                    <div class="owl-carousel testimonial-carousel">
+                        <div class="bg-white p-5">
+                            <i class="fa fa-3x fa-quote-left text-primary mb-4"></i>
+                            <p>Sed et elitr ipsum labore dolor diam, ipsum duo vero sed sit est est ipsum eos clita est ipsum. Est nonumy tempor at kasd. Sed at dolor duo ut dolor, et justo erat dolor magna sed stet amet elitr duo lorem</p>
+                            <div class="d-flex flex-shrink-0 align-items-center mt-4">
+                                <img class="${pageContext.request.contextPath}/Frontend/img-fluid mr-4" src="img/testimonial-2.jpg" alt="">
+                                <div>
+                                    <h5>Student Name</h5>
+                                    <span>Web Design</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-white p-5">
+                            <i class="fa fa-3x fa-quote-left text-primary mb-4"></i>
+                            <p>Sed et elitr ipsum labore dolor diam, ipsum duo vero sed sit est est ipsum eos clita est ipsum. Est nonumy tempor at kasd. Sed at dolor duo ut dolor, et justo erat dolor magna sed stet amet elitr duo lorem</p>
+                            <div class="d-flex flex-shrink-0 align-items-center mt-4">
+                                <img class="${pageContext.request.contextPath}/Frontend/img-fluid mr-4" src="img/testimonial-1.jpg" alt="">
+                                <div>
+                                    <h5>Student Name</h5>
+                                    <span>Web Design</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Testimonial Start -->
+
+
+    <!-- Contact Start -->
+    <div class="container-fluid py-5">
+        <div class="container py-5">
+            <div class="row align-items-center">
+                <div class="col-lg-5 mb-5 mb-lg-0">
+                    <div class="bg-light d-flex flex-column justify-content-center px-5" style="height: 450px;">
+                        <div class="d-flex align-items-center mb-5">
+                            <div class="btn-icon bg-primary mr-4">
+                                <i class="fa fa-2x fa-map-marker-alt text-white"></i>
+                            </div>
+                            <div class="mt-n1">
+                                <h4>Our Location</h4>
+                                <p class="m-0">123 Street, New York, USA</p>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center mb-5">
+                            <div class="btn-icon bg-secondary mr-4">
+                                <i class="fa fa-2x fa-phone-alt text-white"></i>
+                            </div>
+                            <div class="mt-n1">
+                                <h4>Call Us</h4>
+                                <p class="m-0">+012 345 6789</p>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <div class="btn-icon bg-warning mr-4">
+                                <i class="fa fa-2x fa-envelope text-white"></i>
+                            </div>
+                            <div class="mt-n1">
+                                <h4>Email Us</h4>
+                                <p class="m-0">info@example.com</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-7">
+                    <div class="section-title position-relative mb-4">
+                        <h6 class="d-inline-block position-relative text-secondary text-uppercase pb-2">Need Help?</h6>
+                        <h1 class="display-4">Send Us A Message</h1>
+                    </div>
+                    <div class="contact-form">
+                        <form>
+                            <div class="row">
+                                <div class="col-6 form-group">
+                                    <input type="text" class="form-control border-top-0 border-right-0 border-left-0 p-0" placeholder="Your Name" required="required">
+                                </div>
+                                <div class="col-6 form-group">
+                                    <input type="email" class="form-control border-top-0 border-right-0 border-left-0 p-0" placeholder="Your Email" required="required">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control border-top-0 border-right-0 border-left-0 p-0" placeholder="Subject" required="required">
+                            </div>
+                            <div class="form-group">
+                                <textarea class="form-control border-top-0 border-right-0 border-left-0 p-0" rows="5" placeholder="Message" required="required"></textarea>
+                            </div>
+                            <div>
+                                <button class="btn btn-primary py-3 px-5" type="submit">Send Message</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Contact End -->
+
+
+    <!-- Footer Start -->
+    <div class="container-fluid position-relative overlay-top bg-dark text-white-50 py-5" style="margin-top: 90px;">
+        <div class="container mt-5 pt-5">
+            <div class="row">
+                <div class="col-md-6 mb-5">
+                    <a href="index.html" class="navbar-brand">
+                        <h1 class="mt-n2 text-uppercase text-white"><i class="fa fa-book-reader mr-3"></i>Edukate</h1>
+                    </a>
+                    <p class="m-0">Accusam nonumy clita sed rebum kasd eirmod elitr. Ipsum ea lorem at et diam est, tempor rebum ipsum sit ea tempor stet et consetetur dolores. Justo stet diam ipsum lorem vero clita diam</p>
+                </div>
+                <div class="col-md-6 mb-5">
+                    <h3 class="text-white mb-4">Newsletter</h3>
+                    <div class="w-100">
+                        <div class="input-group">
+                            <input type="text" class="form-control border-light" style="padding: 30px;" placeholder="Your Email Address">
+                            <div class="input-group-append">
+                                <button class="btn btn-primary px-4">Sign Up</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 mb-5">
+                    <h3 class="text-white mb-4">Get In Touch</h3>
+                    <p><i class="fa fa-map-marker-alt mr-2"></i>123 Street, New York, USA</p>
+                    <p><i class="fa fa-phone-alt mr-2"></i>+012 345 67890</p>
+                    <p><i class="fa fa-envelope mr-2"></i>info@example.com</p>
+                    <div class="d-flex justify-content-start mt-4">
+                        <a class="text-white mr-4" href="#"><i class="fab fa-2x fa-twitter"></i></a>
+                        <a class="text-white mr-4" href="#"><i class="fab fa-2x fa-facebook-f"></i></a>
+                        <a class="text-white mr-4" href="#"><i class="fab fa-2x fa-linkedin-in"></i></a>
+                        <a class="text-white" href="#"><i class="fab fa-2x fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-5">
+                    <h3 class="text-white mb-4">Our Courses</h3>
+                    <div class="d-flex flex-column justify-content-start">
+                        <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Web Design</a>
+                        <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Apps Design</a>
+                        <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Marketing</a>
+                        <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Research</a>
+                        <a class="text-white-50" href="#"><i class="fa fa-angle-right mr-2"></i>SEO</a>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-5">
+                    <h3 class="text-white mb-4">Quick Links</h3>
+                    <div class="d-flex flex-column justify-content-start">
+                        <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Privacy Policy</a>
+                        <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Terms & Condition</a>
+                        <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Regular FAQs</a>
+                        <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Help & Support</a>
+                        <a class="text-white-50" href="#"><i class="fa fa-angle-right mr-2"></i>Contact</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid bg-dark text-white-50 border-top py-4" style="border-color: rgba(256, 256, 256, .1) !important;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-left mb-3 mb-md-0">
+                    <p class="m-0">Copyright &copy; <a class="text-white" href="#">Your Site Name</a>. All Rights Reserved.
+                    </p>
+                </div>
+                <div class="col-md-6 text-center text-md-right">
+                    <p class="m-0">Designed by <a class="text-white" href="https://htmlcodex.com">HTML Codex</a> Distributed by <a href="https://themewagon.com" target="_blank">ThemeWagon</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End -->
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary rounded-0 btn-lg-square back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="${pageContext.request.contextPath}/Frontend/https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="${pageContext.request.contextPath}/Frontend/https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="${pageContext.request.contextPath}/Frontend/lib/easing/easing.min.js"></script>
+    <script src="${pageContext.request.contextPath}/Frontend/lib/waypoints/waypoints.min.js"></script>
+    <script src="${pageContext.request.contextPath}/Frontend/lib/counterup/counterup.min.js"></script>
+    <script src="${pageContext.request.contextPath}/Frontend/lib/owlcarousel/owl.carousel.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="${pageContext.request.contextPath}/Frontend/js/main.js"></script>
 </body>
+
 </html>

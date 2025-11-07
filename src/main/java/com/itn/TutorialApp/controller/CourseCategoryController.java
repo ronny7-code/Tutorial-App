@@ -6,8 +6,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
 
 @Controller
 public class CourseCategoryController {
@@ -32,9 +34,33 @@ public class CourseCategoryController {
 
        courseCategoryService.saveCourseCategory(courseCategory);
 
-    
-
-        return "redirect:/admin/category/add";
+        return "redirect:/admin/category/add?save=success";
     }
 
+    @GetMapping("/admin/category/update/{id}")
+    public String updateCourseCategory(@PathVariable("id") Long id, Model model){
+        CourseCategory courseCategory = courseCategoryService.findCourseCategoryById(id).orElseThrow();
+        model.addAttribute("category", courseCategory);
+        model.addAttribute("category_list", courseCategoryService.findAllCourseCategories());
+        return "admin/CourseCategory";
+    }
+
+    @PostMapping("/admin/category/update/{id}")
+    public String updatingCategory(@PathVariable Long id,
+                                   @RequestParam String name,
+                                   @RequestParam String description){
+
+        CourseCategory category = courseCategoryService.findCourseCategoryById(id)
+                .orElseThrow();
+        category.setName(name);
+        category.setDescription(description);
+        courseCategoryService.saveCourseCategory(category);
+        return "redirect:/admin/category/add?update=success";
+    }
+
+    @GetMapping("/admin/category/delete/{id}")
+    public String deleteCategory(@PathVariable("id") Long id, Model model){
+        courseCategoryService.deleteCourseCategory(id);
+        return "redirect:/admin/category/add?delete=success";
+    }
 }

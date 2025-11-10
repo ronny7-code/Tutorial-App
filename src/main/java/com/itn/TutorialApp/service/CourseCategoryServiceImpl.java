@@ -18,18 +18,9 @@ public class CourseCategoryServiceImpl implements CourseCategoryService{
 	private CourseCategoryRepository categoryRepository;
 
 	@Override
-	public Boolean saveCourseCategory(CourseCategory category) {
-		boolean success = false;
-		try {
-			 categoryRepository.save(category);
-			 success = true;
-		}
-		catch (Exception e){
-			System.out.println("Exception: " + e.getMessage());
-		}
-		return success;
+	public void saveCourseCategory(CourseCategory category) {
+		categoryRepository.save(category);
 	}
-
 	@Override
 	public List<CourseCategory> findAllCourseCategories() {
 		return categoryRepository.findAll();
@@ -37,11 +28,7 @@ public class CourseCategoryServiceImpl implements CourseCategoryService{
 
 	@Override
 	public Optional<CourseCategory> findCourseCategoryById(Long id) {
-		Optional<CourseCategory> category = categoryRepository.findById(id);
-		if(category.isPresent()) {
-			return category;}
-
-		return Optional.empty();
+		return categoryRepository.findById(id);
 	}
 
 	@Override

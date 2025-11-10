@@ -20,17 +20,19 @@ public class CourseCategoryController {
     @GetMapping({"/admin/category/add","/admin/category/show"})
     public String getCourseCategoryForm(Model model){
         model.addAttribute("category_list", courseCategoryService.findAllCourseCategories());
-        return "admin/CourseCategory";
+        return "admin/courseCategory";
     }
 
     @PostMapping("/admin/category/add")
     public String getCourseCategory(
             @RequestParam("name") String name,
-            @RequestParam("description") String description) {
+            @RequestParam("description") String description,
+            @RequestParam("type") String type) {
 
         CourseCategory courseCategory = new CourseCategory();
         courseCategory.setName(name);
         courseCategory.setDescription(description);
+        courseCategory.setType(type);
 
        courseCategoryService.saveCourseCategory(courseCategory);
 
@@ -42,18 +44,20 @@ public class CourseCategoryController {
         CourseCategory courseCategory = courseCategoryService.findCourseCategoryById(id).orElseThrow();
         model.addAttribute("category", courseCategory);
         model.addAttribute("category_list", courseCategoryService.findAllCourseCategories());
-        return "admin/CourseCategory";
+        return "admin/courseCategory";
     }
 
     @PostMapping("/admin/category/update/{id}")
     public String updatingCategory(@PathVariable Long id,
                                    @RequestParam String name,
-                                   @RequestParam String description){
+                                   @RequestParam String description,
+                                   @RequestParam("type") String type){
 
         CourseCategory category = courseCategoryService.findCourseCategoryById(id)
                 .orElseThrow();
         category.setName(name);
         category.setDescription(description);
+        category.setType(type);
         courseCategoryService.saveCourseCategory(category);
         return "redirect:/admin/category/add?update=success";
     }

@@ -18,5 +18,6 @@ public class CourseCategory {
 	
 	private String name;
 	private String description;
+	private String type;
 
 }

@@ -7,7 +7,7 @@ import com.itn.TutorialApp.entity.CourseCategory;
 
 public interface CourseCategoryService {
 
-	Boolean saveCourseCategory(CourseCategory category);
+	void saveCourseCategory(CourseCategory category);
 
 	List<CourseCategory> findAllCourseCategories();
 

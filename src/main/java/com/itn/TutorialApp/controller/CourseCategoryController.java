@@ -24,7 +24,7 @@ public class CourseCategoryController {
     }
 
     @PostMapping("/admin/category/add")
-    public String getCourseCategory(
+    public String addCourseCategory(
             @RequestParam("name") String name,
             @RequestParam("description") String description,
             @RequestParam("type") String type) {

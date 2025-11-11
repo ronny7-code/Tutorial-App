@@ -37,6 +37,7 @@ public class CourseCategoryServiceImpl implements CourseCategoryService{
 
 	    oldCategory.setName(updatedCategory.getName());
 	    oldCategory.setDescription(updatedCategory.getDescription());
+		oldCategory.setType(updatedCategory.getType());
 
 	    return categoryRepository.save(oldCategory);
 	}

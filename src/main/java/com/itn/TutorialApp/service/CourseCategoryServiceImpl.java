@@ -3,6 +3,7 @@ package com.itn.TutorialApp.service;
 import java.util.List;
 import java.util.Optional;
 
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +19,7 @@ public class CourseCategoryServiceImpl implements CourseCategoryService{
 	private CourseCategoryRepository categoryRepository;
 
 	@Override
+	@Transactional
 	public void saveCourseCategory(CourseCategory category) {
 		categoryRepository.save(category);
 	}
@@ -32,17 +34,20 @@ public class CourseCategoryServiceImpl implements CourseCategoryService{
 	}
 
 	@Override
+	@Transactional
 	public CourseCategory updateCourseCategory(Long courseId, CourseCategory updatedCategory) {
 	    CourseCategory oldCategory = categoryRepository.findById(courseId).orElseThrow(() -> new EntityNotFoundException("CourseCategory not found with id: " + courseId));
 
 	    oldCategory.setName(updatedCategory.getName());
 	    oldCategory.setDescription(updatedCategory.getDescription());
 		oldCategory.setType(updatedCategory.getType());
+		oldCategory.setCourses(updatedCategory.getCourses());
 
 	    return categoryRepository.save(oldCategory);
 	}
 
 	@Override
+	@Transactional
 	public void deleteCourseCategory(Long id) {
 		categoryRepository.deleteById(id);
 	}

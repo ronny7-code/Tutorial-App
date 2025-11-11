@@ -36,7 +36,7 @@
         <!-- End of Sidebar -->
 
         <!-- Content Wrapper -->
-        <div id="content-wrapper" class="d-flex flex-column">
+        <div id="content-wrapper" class="d-flex flex-column pl-4">
 
             <!-- Main Content -->
 
@@ -58,8 +58,12 @@
         <label>Course Name:</label><br>
         <input type="text" name="name" value="${course.name}" required><br><br>
 
-        <label>Type:</label><br>
-        <input type="text" name="type" value="${course.type}" required><br><br>
+        <label>Category:</label><br>
+        <select  name="category" required>
+         <c:forEach items="${categoryList}" var="category">
+         <option value="${category.id}">${category.name}</option>
+         </c:forEach>
+        </select>
 
         <label>Description:</label><br>
         <textarea name="description" rows="4" cols="50" required>${course.description}</textarea><br><br>
@@ -75,7 +79,7 @@
         <thead>
             <tr>
                 <th>Course Name</th>
-                <th>Type</th>
+                <th>Category</th>
                 <th>Description</th>
                 <th>Edit</th>
                 <th>Delete</th>
@@ -84,9 +88,9 @@
         <tbody>
             <c:forEach var="course" items="${courseList}">
                 <tr>
-                    <td>${category.name}</td>
-                     <td>${category.type}</td>
-                    <td>${category.description}</td>
+                    <td>${course.name}</td>
+                     <td>${course.courseCategory.name}</td>
+                    <td>${course.description}</td>
                     <td><a href="${pageContext.request.contextPath}/admin/course/update/${course.id}">Edit</a></td>
                     <td><a href="${pageContext.request.contextPath}/admin/course/delete/${course.id}">Delete</a></td>
                 </tr>

@@ -1,6 +1,8 @@
 package com.itn.TutorialApp.controller;
 
 import com.itn.TutorialApp.entity.Course;
+import com.itn.TutorialApp.entity.CourseCategory;
+import com.itn.TutorialApp.service.CourseCategoryService;
 import com.itn.TutorialApp.service.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,9 +18,13 @@ public class CourseController {
     @Autowired
     private CourseService courseService;
 
+    @Autowired
+    private CourseCategoryService courseCategoryService;
+
     @GetMapping({"/admin/course/add", "/admin/course/show"})
     public String getCourseForm(Model model){
         model.addAttribute("courseList", courseService.findAllCourse());
+        model.addAttribute("categoryList", courseCategoryService.findAllCourseCategories());
         return "admin/course";
     }
 
@@ -26,12 +32,12 @@ public class CourseController {
     public String addCourse(
             @RequestParam("name") String name,
             @RequestParam("description") String description,
-            @RequestParam("type") String type) {
+            @RequestParam("category") CourseCategory category) {
 
         Course course = new Course();
         course.setName(name);
         course.setDescription(description);
-        course.setType(type);
+        course.setCourseCategory(category);
 
         courseService.saveCourse(course);
 
@@ -41,22 +47,22 @@ public class CourseController {
     @GetMapping("/admin/course/update/{id}")
     public String updateCourse(@PathVariable("id") Long id, Model model){
         Course course = courseService.findCourseById(id).orElseThrow();
-        model.addAttribute("category", course);
+        model.addAttribute("course", course);
         model.addAttribute("category_list", courseService.findAllCourse());
         return "admin/course";
     }
 
     @PostMapping("/admin/course/update/{id}")
     public String updatingCourse(@PathVariable Long id,
-                                   @RequestParam String name,
-                                   @RequestParam String description,
-                                   @RequestParam("type") String type){
+                                 @RequestParam("name") String name,
+                                 @RequestParam("description") String description,
+                                 @RequestParam("category") CourseCategory category){
 
         Course course = courseService.findCourseById(id)
                 .orElseThrow();
         course.setName(name);
         course.setDescription(description);
-        course.setType(type);
+        course.setCourseCategory(category);
         courseService.saveCourse(course);
         return "redirect:/admin/course/add?update=success";
     }

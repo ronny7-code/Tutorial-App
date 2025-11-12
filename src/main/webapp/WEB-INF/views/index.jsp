@@ -12,7 +12,7 @@
     <meta content="Free HTML Templates" name="description">
 
     <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
+    <link href="${pageContext.request.contextPath}/Frontend/img/favicon.ico" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -156,42 +156,6 @@
                 </div>
             </div>
         </div>
-        <div class="row justify-content-center bg-image mx-0 mb-5">
-            <div class="col-lg-6 py-5">
-                <div class="bg-white p-5 my-5">
-                    <h1 class="text-center mb-4">30% Off For New Students</h1>
-                    <form>
-                        <div class="form-row">
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <input type="text" class="form-control bg-light border-0" placeholder="Your Name" style="padding: 30px 20px;">
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <input type="email" class="form-control bg-light border-0" placeholder="Your Email" style="padding: 30px 20px;">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <select class="custom-select bg-light border-0 px-3" style="height: 60px;">
-                                        <option selected>Select A courses</option>
-                                        <option value="1">courses 1</option>
-                                        <option value="2">courses 1</option>
-                                        <option value="3">courses 1</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <button class="btn btn-primary btn-block" type="submit" style="height: 60px;">Sign Up Now</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
     </div>
     <!-- Courses End -->
 
@@ -306,7 +270,7 @@
             </div>
         </div>
     </div>
-    <!-- Testimonial Start -->
+    <!-- Testimonial End -->
 
 
     <!-- Contact Start -->
@@ -321,7 +285,7 @@
                             </div>
                             <div class="mt-n1">
                                 <h4>Our Location</h4>
-                                <p class="m-0">123 Street, New York, USA</p>
+                                <p class="m-0">Nepal, Kathmandu</p>
                             </div>
                         </div>
                         <div class="d-flex align-items-center mb-5">
@@ -330,7 +294,7 @@
                             </div>
                             <div class="mt-n1">
                                 <h4>Call Us</h4>
-                                <p class="m-0">+012 345 6789</p>
+                                <p class="m-0">+977 9741875904</p>
                             </div>
                         </div>
                         <div class="d-flex align-items-center">
@@ -339,7 +303,7 @@
                             </div>
                             <div class="mt-n1">
                                 <h4>Email Us</h4>
-                                <p class="m-0">info@example.com</p>
+                                <p class="m-0">bijay98813@gmail.com</p>
                             </div>
                         </div>
                     </div>

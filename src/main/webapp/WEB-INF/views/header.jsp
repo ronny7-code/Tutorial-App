@@ -18,8 +18,6 @@
                                 <a class="dropdown-item" href="#">${course.name}</a>
                               </c:forEach>
                         </div>
-
-
                     </div>
                     <input type="text" class="form-control border-light" style="padding: 30px 25px;" placeholder="Keyword">
                     <div class="input-group-append">

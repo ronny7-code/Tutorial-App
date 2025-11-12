@@ -39,16 +39,20 @@ public class HomeController {
 
 	@PostMapping("/user/signup")
 	public String signup(@ModelAttribute User user){
-		user.setActive("1"); // 1 means enable 0 means disable
+		user.setActive("1"); // 1 - means enable 0 means disable
 		UserRole userRole = new UserRole();
 		userRole.setRole("ROLE_USER");
 		userRole.setUser(user);
 
 		user.setUserRole(userRole);
 
-		userService.addUser(user);
-
+		if(user.getPassword().equals(user.getCPassword())) {
+			userService.addUser(user);
+		}
+		else{
+			throw new IllegalArgumentException("Password is not matching");
+		}
 		// Calling user service method to save user
-		return "redirect:/user/login";
+		return "redirect:/user/login?success=true";
 	}
 }

@@ -64,7 +64,7 @@
          <option value="${category.id}">${category.name}</option>
          </c:forEach>
         </select>
-
+        <br> <br>
         <label>Description:</label><br>
         <textarea name="description" rows="4" cols="50" required>${course.description}</textarea><br><br>
 

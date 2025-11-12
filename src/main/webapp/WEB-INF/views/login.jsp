@@ -75,6 +75,7 @@
                     </div>
                     <div class="contact-form">
                         <form action="${pageContext.request.contextPath}/login" method="POST">
+                         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
                             <div class="row">
                                 <div class="col-6 form-group">
                                     <input type="text" name="username" class="form-control border-top-0 border-right-0 border-left-0 p-0" placeholder="Your Username" required="required">

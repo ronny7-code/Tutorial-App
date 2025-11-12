@@ -71,7 +71,7 @@
         <div class="row mx-0 justify-content-center pt-5">
             <div class="col-lg-6">
                 <div class="section-title text-center position-relative mb-4">
-                    <h1 class="display-4">Signup New User</h1>
+                    <h1 class="display-4">Sign Up New User</h1>
                 </div>
             </div>
         </div>
@@ -81,6 +81,7 @@
                 <div class="bg-white p-5 my-5">
                     <h1 class="text-center mb-4">New User Detail</h1>
                     <form action="${pageContext.request.contextPath}/user/signup" method="POST">
+                     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
                       <div class="form-row">
                           <div class="col-sm-6">
                                <div class="form-group">
@@ -89,37 +90,73 @@
                           </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                  <input type="text" name="lastname" class="form-control bg-light border-0" placeholder="Your Last Name" style="padding: 30px 20px;">
+                                  <input type="text" name="lastName" class="form-control bg-light border-0" placeholder="Your Last Name" style="padding: 30px 20px;">
                                  </div>
                             </div>
                           </div>
-                                <div class="form-row">
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <input type="text" name="phoneNumber" class="form-control bg-light border-0" placeholder="Your PhoneNumber" style="padding: 30px 20px;">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <input type="email" name="email" class="form-control bg-light border-0" placeholder="Your Email" style="padding: 30px 20px;">
-                                        </div>
-                                    </div>
+                      <div class="form-row">
+                          <div class="col-sm-6">
+                               <div class="form-group">
+                                  <input type="text" name="phoneNumber" class="form-control bg-light border-0" placeholder="Your Phone Number" style="padding: 30px 20px;">
                                 </div>
-                                <div class="form-row">
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <select class="custom-select bg-light border-0 px-3" style="height: 60px;">
-                                                <option selected>Select a courses</option>
-                                                <c:forEach var="courses" items="${courseList}">
-                                                <option > ${courses.name} </option>
-                                                </c:forEach>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <button class="btn btn-primary btn-block" type="submit" style="height: 60px;">Sign Up Now</button>
-                                    </div>
+                          </div>
+                           <div class="col-sm-6">
+                                 <div class="form-group">
+                                    <input type="email" name="email" class="form-control bg-light border-0" placeholder="Your Email" style="padding: 30px 20px;">
+                                 </div>
+                           </div>
+                       </div>
+                       <div class="form-row">
+                          <div class="col-sm-6">
+                               <div class="form-group">
+                                  <input type="text" name="address" class="form-control bg-light border-0" placeholder="Your Address" style="padding: 30px 20px;">
                                 </div>
+                          </div>
+                           <div class="col-sm-6">
+                                 <div class="form-group">
+                                    <input type="text" name="gender" class="form-control bg-light border-0" placeholder="Your Gender" style="padding: 30px 20px;">
+                                 </div>
+                           </div>
+                       </div>
+                       <div class="form-row">
+                          <div class="col-sm-6">
+                               <div class="form-group">
+                                  <input type="date" name="DOB" class="form-control bg-light border-0" placeholder="Your DOB" style="padding: 30px 20px;">
+                                </div>
+                          </div>
+                           <div class="col-sm-6">
+                                 <div class="form-group">
+                                    <input type="text" name="username" class="form-control bg-light border-0" placeholder="Your Username" style="padding: 30px 20px;">
+                                 </div>
+                           </div>
+                       </div>
+                       <div class="form-row">
+                          <div class="col-sm-6">
+                               <div class="form-group">
+                                  <input type="password" name="password" class="form-control bg-light border-0" placeholder="Your Password" style="padding: 30px 20px;">
+                                </div>
+                          </div>
+                           <div class="col-sm-6">
+                                 <div class="form-group">
+                                    <input type="password" name="cPassword" class="form-control bg-light border-0" placeholder="Confirm Your Password" style="padding: 30px 20px;">
+                                 </div>
+                           </div>
+                       </div>
+                        <div class="form-row">
+                            <div class="col-sm-6">
+                                 <div class="form-group">
+                                     <select class="custom-select bg-light border-0 px-3" style="height: 60px;">
+                                         <option selected>Select a courses</option>
+                                         <c:forEach var="courses" items="${courseList}">
+                                         <option > ${courses.name} </option>
+                                         </c:forEach>
+                                     </select>
+                                 </div>
+                            </div>
+                                 <div class="col-sm-6">
+                                     <button class="btn btn-primary btn-block" type="submit" style="height: 60px;">Sign Up Now</button>
+                                 </div>
+                            </div>
                             </form>
                         </div>
                     </div>

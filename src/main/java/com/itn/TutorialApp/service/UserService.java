@@ -17,4 +17,6 @@ public interface UserService {
 
     User updateUser(User user, Long id);
 
+    User loginInUser(String username, String password);
+
 }

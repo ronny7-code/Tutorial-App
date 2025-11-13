@@ -70,4 +70,9 @@ public class UserServiceImpl implements UserService{
 
         return userRepository.save(oldUser);
     }
+
+    @Override
+    public User loginInUser(String username, String password) {
+        return userRepository.findByUsernameAndPasswordAndActive(username, password, "1");
+    }
 }

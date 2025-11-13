@@ -70,11 +70,16 @@
 
                 <div class="col-lg-8">
                     <div class="section-title position-relative mb-4">
+                    <c:if test="${not empty errorMsg}">
+                    <h6 class="d-inline-block position-relative text-secondary text-uppercase pb-2">
+                    ${errorMsg}
+                    </h6> <br> <br>
+                    </c:if>
                         <h6 class="d-inline-block position-relative text-secondary text-uppercase pb-2">Not Registered Yet? <a href="${pageContext.request.contextPath}/user/signup">Sign Up </a></h6>
                         <h1 class="display-4">User Login Here</h1>
                     </div>
                     <div class="contact-form">
-                        <form action="${pageContext.request.contextPath}/login" method="POST">
+                        <form action="${pageContext.request.contextPath}/user/login" method="POST">
                          <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
                             <div class="row">
                                 <div class="col-6 form-group">

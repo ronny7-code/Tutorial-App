@@ -4,6 +4,7 @@ import com.itn.TutorialApp.entity.User;
 import com.itn.TutorialApp.entity.UserRole;
 import com.itn.TutorialApp.service.CourseService;
 import com.itn.TutorialApp.service.UserService;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -55,4 +56,22 @@ public class HomeController {
 		// Calling user service method to save user
 		return "redirect:/user/login?success=true";
 	}
+
+	@PostMapping("/user/login")
+	public String loginUser(@ModelAttribute User user, HttpSession session, Model model){
+		User presentUser = userService.loginInUser(user.getUsername(), user.getPassword());
+		if(presentUser != null){
+			session.setAttribute("loggedInUser", presentUser);
+			return "redirect:/home?success=true";
+		}
+		model.addAttribute("errorMsg", "Username or Password didn't match");
+		return "login";
+	}
+
+	@GetMapping("/user/logout")
+	public String logoutUser(HttpSession session) {
+		session.invalidate();
+		return "redirect:/user/login";
+	}
+
 }

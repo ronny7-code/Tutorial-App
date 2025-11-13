@@ -35,7 +35,34 @@
 
 
     <!-- Navbar Start -->
-    <jsp:include page="navbar.jsp" />
+    <div class="container-fluid p-0">
+        <nav class="navbar navbar-expand-lg bg-white navbar-light py-3 py-lg-0 px-lg-5">
+            <a href="${pageContext.request.contextPath}/home" class="navbar-brand ml-lg-3">
+                <h1 class="m-0 text-uppercase text-primary"><i class="fa fa-book-reader mr-3"></i>eLearning Hub</h1>
+            </a>
+            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-between px-lg-3" id="navbarCollapse">
+                <div class="navbar-nav mx-auto py-0">
+                    <a href="${pageContext.request.contextPath}/home" class="nav-item nav-link active">Home</a>
+                    <a href="about.html" class="nav-item nav-link">About</a>
+                    <a href="course.html" class="nav-item nav-link">Courses</a>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
+                        <div class="dropdown-menu m-0">
+                            <a href="detail.html" class="dropdown-item">Course Detail</a>
+                            <a href="feature.html" class="dropdown-item">Our Features</a>
+                            <a href="team.html" class="dropdown-item">Instructors</a>
+                            <a href="testimonial.html" class="dropdown-item">Testimonial</a>
+                        </div>
+                    </div>
+                    <a href="contact.html" class="nav-item nav-link">Contact</a>
+                </div>
+                <a href="${pageContext.request.contextPath}/user/logout" class="btn btn-primary py-2 px-4 d-none d-lg-block">Log out</a>
+            </div>
+        </nav>
+    </div>
     <!-- Navbar End -->
 
 
@@ -171,8 +198,8 @@
                 <div class="team-item">
                     <img class="img-fluid w-100" src="${pageContext.request.contextPath}/Frontend/img/team-1.jpg" alt="">
                     <div class="bg-light text-center p-4">
-                        <h5 class="mb-3">Instructor Name</h5>
-                        <p class="mb-2">Web Design & Development</p>
+                        <h5 class="mb-3">Bijay Tamang</h5>
+                        <p class="mb-2">Java & SpringBoot for backend</p>
                         <div class="d-flex justify-content-center">
                             <a class="mx-1 p-1" href="#"><i class="fab fa-twitter"></i></a>
                             <a class="mx-1 p-1" href="#"><i class="fab fa-facebook-f"></i></a>
@@ -342,7 +369,7 @@
 
 
     <!-- Footer Start -->
-    <jsp:include page="footer.jsp"/>
+   <jsp:include page="footer.jsp"/>
     <!-- Footer End -->
 
 

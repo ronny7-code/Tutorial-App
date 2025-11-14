@@ -26,7 +26,7 @@
                     </div>
                     <a href="contact.html" class="nav-item nav-link">Contact</a>
                 </div>
-                <a href="${pageContext.request.contextPath}/user/login" class="btn btn-primary py-2 px-4 d-none d-lg-block">Login</a>
+                <a href="${pageContext.request.contextPath}/login" class="btn btn-primary py-2 px-4 d-none d-lg-block">Login</a>
             </div>
         </nav>
     </div>

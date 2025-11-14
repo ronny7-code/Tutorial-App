@@ -57,7 +57,7 @@
                     </div>
                     <a href="contact.html" class="nav-item nav-link">Contact</a>
                 </div>
-                <a href="${pageContext.request.contextPath}/user/signup" class="btn btn-primary py-2 px-4 d-none d-lg-block">Sign Up</a>
+                <a href="${pageContext.request.contextPath}/signup" class="btn btn-primary py-2 px-4 d-none d-lg-block">Sign Up</a>
             </div>
         </nav>
     </div>
@@ -75,11 +75,11 @@
                     ${errorMsg}
                     </h6> <br> <br>
                     </c:if>
-                        <h6 class="d-inline-block position-relative text-secondary text-uppercase pb-2">Not Registered Yet? <a href="${pageContext.request.contextPath}/user/signup">Sign Up </a></h6>
+                        <h6 class="d-inline-block position-relative text-secondary text-uppercase pb-2">Not Registered Yet? <a href="${pageContext.request.contextPath}/signup">Sign Up </a></h6>
                         <h1 class="display-4">User Login Here</h1>
                     </div>
                     <div class="contact-form">
-                        <form action="${pageContext.request.contextPath}/user/login" method="POST">
+                        <form action="${pageContext.request.contextPath}/login" method="POST">
                          <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
                             <div class="row">
                                 <div class="col-6 form-group">

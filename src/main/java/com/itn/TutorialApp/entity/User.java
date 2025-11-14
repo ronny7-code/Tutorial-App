@@ -21,6 +21,7 @@ public class User {
     private String address;
     private String gender;
     private LocalDate DOB;
+    @Column(unique = true)
     private String username;
     private String password;
     @Transient

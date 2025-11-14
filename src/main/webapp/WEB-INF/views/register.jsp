@@ -59,7 +59,7 @@
                         </div>
                         <a href="contact.html" class="nav-item nav-link">Contact</a>
                     </div>
-                    <a href="${pageContext.request.contextPath}/user/login" class="btn btn-primary py-2 px-4 d-none d-lg-block">Login</a>
+                    <a href="${pageContext.request.contextPath}/login" class="btn btn-primary py-2 px-4 d-none d-lg-block">Login</a>
                 </div>
             </nav>
         </div>
@@ -80,7 +80,7 @@
             <div class="col-lg-6 py-5">
                 <div class="bg-white p-5 my-5">
                     <h1 class="text-center mb-4">New User Detail</h1>
-                    <form action="${pageContext.request.contextPath}/user/signup" method="POST">
+                    <form action="${pageContext.request.contextPath}/signup" method="POST">
                      <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
                       <div class="form-row">
                           <div class="col-sm-6">

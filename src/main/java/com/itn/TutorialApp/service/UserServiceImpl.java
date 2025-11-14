@@ -49,25 +49,6 @@ public class UserServiceImpl implements UserService{
 
         BeanUtils.copyProperties(updatedUser, oldUser, "id", "cPassword", "authority", "userRole", "password");
 
-
-        if (updatedUser.getPassword() != null && !updatedUser.getPassword().isBlank()) {
-            oldUser.setPassword(updatedUser.getPassword());
-        }
-
-
-        if (updatedUser.getUserRole() != null) {
-            UserRole oldRole = oldUser.getUserRole();
-            if (oldRole == null) {
-
-                UserRole newRole = updatedUser.getUserRole();
-                newRole.setUser(oldUser);
-                oldUser.setUserRole(newRole);
-            } else {
-
-                oldRole.setRole(updatedUser.getUserRole().getRole());
-            }
-        }
-
         return userRepository.save(oldUser);
     }
 

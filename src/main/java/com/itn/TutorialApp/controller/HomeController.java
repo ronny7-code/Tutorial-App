@@ -62,7 +62,7 @@ public class HomeController {
 		User presentUser = userService.loginInUser(user.getUsername(), user.getPassword());
 		if(presentUser != null){
 			session.setAttribute("loggedInUser", presentUser);
-			return "redirect:/home?success=true";
+			return "profile";
 		}
 		model.addAttribute("errorMsg", "Username or Password didn't match");
 		return "login";
@@ -72,6 +72,11 @@ public class HomeController {
 	public String logoutUser(HttpSession session) {
 		session.invalidate();
 		return "redirect:/user/login";
+	}
+
+	@GetMapping("/user/profile")
+	public String getUserProfile(){
+		return "profile";
 	}
 
 }

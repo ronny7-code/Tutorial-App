@@ -9,67 +9,59 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-
-import javax.sql.DataSource;
 
 @Configuration
 @EnableWebSecurity
 public class WebAppSecurityConfig {
 
     @Autowired
-    private DataSource dataSource;
-
-    @Autowired
     private PasswordEncoder passwordEncoder;
 
     @Autowired
-    private UserDetailsService userDetailService;
-
+    private UserDetailsService userDetailsService;
 
     @Bean
-    SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests(authorize -> authorize
                         .requestMatchers("/admin/**").hasRole("ADMIN")
                         .requestMatchers("/tutor/**").hasRole("TUTOR")
-                        .requestMatchers("/user/**").hasRole("USER").anyRequest().permitAll()
+                        .requestMatchers("/user/**").hasRole("USER")
+                        .anyRequest().permitAll()
                 )
-
                 .formLogin(login -> login
                         .loginPage("/login")
                         .loginProcessingUrl("/login")
                         .defaultSuccessUrl("/welcome", true)
                         .failureUrl("/login?failed")
                         .permitAll())
-
-                .logout(logout -> logout.logoutUrl("/logout").permitAll()
-                        .invalidateHttpSession(true))
+                .logout(logout -> logout
+                        .logoutUrl("/logout")
+                        .invalidateHttpSession(true)
+                        .permitAll())
                 .rememberMe(me -> me.key("my_key"))
                 .csrf(e -> e.disable());
 
         return http.build();
     }
 
+    public AuthenticationProvider getAuthenticationProvider() {
+        DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
+        provider.setUserDetailsService(userDetailsService); // use autowired field
+        provider.setPasswordEncoder(passwordEncoder);
+        return provider;
+    }
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+        auth.authenticationProvider(getAuthenticationProvider());
+
+        // Optional in-memory admin
         auth.inMemoryAuthentication()
                 .passwordEncoder(passwordEncoder)
                 .withUser("admin")
                 .password("$2a$10$cWnl6LTOmd/KWa97YDXbV.MPc8MlQocIg4q2pCacbJ7hlpAZ8gJFq")
-                .disabled(false)
                 .roles("ADMIN");
-        auth.authenticationProvider(getAuthenticationProvider());
     }
-    
-    public AuthenticationProvider getAuthenticationProvider(){
-        DaoAuthenticationProvider authentication = new DaoAuthenticationProvider();
-        authentication.setPasswordEncoder(passwordEncoder);
-        authentication.setUserDetailsService(userDetailService);
-        return authentication;
-    }
-
 }

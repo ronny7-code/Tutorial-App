@@ -12,7 +12,6 @@ public class TutorialAppApplication {
 	@Bean
 	public PasswordEncoder getPasswordEncoder(){
 		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-//		System.out.println(passwordEncoder.encode("admin123"));
 		return passwordEncoder;
 	}
 

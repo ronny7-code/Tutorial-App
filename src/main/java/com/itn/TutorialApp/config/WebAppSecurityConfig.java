@@ -3,9 +3,13 @@ package com.itn.TutorialApp.config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationProvider;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
@@ -21,6 +25,8 @@ public class WebAppSecurityConfig {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+    @Autowired
+    private UserDetailsService userDetailService;
 
 
     @Bean
@@ -68,5 +74,12 @@ public class WebAppSecurityConfig {
                 .password("$2a$10$cWnl6LTOmd/KWa97YDXbV.MPc8MlQocIg4q2pCacbJ7hlpAZ8gJFq")
                 .disabled(false)
                 .roles("ADMIN");
+    }
+
+    public AuthenticationProvider getAuthenticationProvider(){
+        DaoAuthenticationProvider authentication = new DaoAuthenticationProvider();
+        authentication.setPasswordEncoder(new BCryptPasswordEncoder());
+        authentication.setUserDetailsService(userDetailService);
+        return authentication;
     }
 }

@@ -19,8 +19,8 @@ import javax.sql.DataSource;
 @EnableWebSecurity
 public class WebAppSecurityConfig {
 
-//    @Autowired
-//    private DataSource dataSource;
+    @Autowired
+    private DataSource dataSource;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -35,11 +35,7 @@ public class WebAppSecurityConfig {
         http.authorizeHttpRequests(authorize -> authorize
                         .requestMatchers("/admin/**").hasRole("ADMIN")
                         .requestMatchers("/tutor/**").hasRole("TUTOR")
-                        .requestMatchers("/user/**").hasRole("USER")
-                )
-                .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers("/**").permitAll()
-                        .anyRequest().authenticated()
+                        .requestMatchers("/user/**").hasRole("USER").anyRequest().permitAll()
                 )
 
                 .formLogin(login -> login
@@ -60,26 +56,20 @@ public class WebAppSecurityConfig {
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-//        auth.jdbcAuthentication()
-//                .dataSource(dataSource)
-//                .passwordEncoder(passwordEncoder)
-//                .usersByUsernameQuery("select username, password, enable from user_detail_tbl where username=?")
-//
-//                .authoritiesByUsernameQuery("select ud.username, ur.role from user_detail_tbl "
-//                        + "as ud, user_role_tbl as ur where ud.user_id = ur.user_id and ud.username=?");
-
         auth.inMemoryAuthentication()
                 .passwordEncoder(passwordEncoder)
                 .withUser("admin")
                 .password("$2a$10$cWnl6LTOmd/KWa97YDXbV.MPc8MlQocIg4q2pCacbJ7hlpAZ8gJFq")
                 .disabled(false)
                 .roles("ADMIN");
+        auth.authenticationProvider(getAuthenticationProvider());
     }
-
+    
     public AuthenticationProvider getAuthenticationProvider(){
         DaoAuthenticationProvider authentication = new DaoAuthenticationProvider();
-        authentication.setPasswordEncoder(new BCryptPasswordEncoder());
+        authentication.setPasswordEncoder(passwordEncoder);
         authentication.setUserDetailsService(userDetailService);
         return authentication;
     }
+
 }

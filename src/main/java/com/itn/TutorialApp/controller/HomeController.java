@@ -14,8 +14,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import java.util.List;
-
 @Controller
 public class HomeController {
 
@@ -28,68 +26,79 @@ public class HomeController {
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 
+	// Home page
 	@GetMapping({"/", "/home"})
 	public String getHomePage(Model model) {
 		model.addAttribute("courseList", courseService.findAllCourse());
 		return "index";
 	}
 
+	// Login page
 	@GetMapping("/login")
-	public String getLoginPage(){
+	public String getLoginPage() {
 		return "login";
 	}
 
+	// Registration page
 	@GetMapping("/signup")
-	public String getRegisterPage(Model model){
+	public String getRegisterPage(Model model) {
 		model.addAttribute("courseList", courseService.findAllCourse());
 		return "register";
 	}
 
+	// User signup
 	@PostMapping("/signup")
-	public String signup(@ModelAttribute User user){
-		user.setActive("1"); // 1 - means enable 0 means disable
+	public String signup(@ModelAttribute User user) {
+
+		// Safe password comparison to prevent NullPointerException
+		if (!java.util.Objects.equals(user.getPassword(), user.getCPassword())) {
+			throw new IllegalArgumentException("Password is not matching");
+		}
+
+		// Enable the user
+		user.setActive("1"); // 1 = enabled, 0 = disabled
+
+		// Assign default role
 		UserRole userRole = new UserRole();
 		userRole.setRole("USER");
 		userRole.setUser(user);
-
 		user.setUserRole(userRole);
 
-		if(user.getPassword().equals(user.getCPassword())) {
-			user.setPassword(passwordEncoder.encode(user.getPassword()));
-			userService.addUser(user);
-		}
-		else{
-			throw new IllegalArgumentException("Password is not matching");
-		}
-		// Calling user service method to save user
-		return "redirect:/login?success=true";
+		// Encode password before saving
+		user.setPassword(passwordEncoder.encode(user.getPassword()));
+
+		// Save user
+		userService.addUser(user);
+
+		// Redirect to login page with success
+		return "redirect:/login?success";
 	}
 
+	// Logout user
 	@GetMapping("/logout")
 	public String logoutUser(HttpSession session) {
 		session.invalidate();
 		return "redirect:/login";
 	}
 
+	// User profile page
 	@GetMapping("/user/profile")
-	public String getUserProfile(){
+	public String getUserProfile() {
 		return "profile";
 	}
 
+	// Welcome page redirect based on role
 	@GetMapping("/welcome")
-	public String getAdminHome(Authentication authentication){
+	public String getAdminHome(Authentication authentication) {
 
 		String authority = authentication.getAuthorities().toString();
 
-		if(authority.contains("ADMIN")){
+		if (authority.contains("ADMIN")) {
 			return "redirect:/admin/home";
-		}
-		else if(authority.contains("TUTOR")){
+		} else if (authority.contains("TUTOR")) {
 			return "redirect:/tutor/home";
-		}
-		else{
+		} else {
 			return "redirect:/user/profile";
 		}
 	}
-
 }

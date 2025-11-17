@@ -47,7 +47,7 @@ public class UserServiceImpl implements UserService{
                 .orElseThrow(() -> new EntityNotFoundException("User not found with id: " + id));
 
 
-        BeanUtils.copyProperties(updatedUser, oldUser, "id", "cPassword", "authority", "userRole", "password");
+        BeanUtils.copyProperties(updatedUser, oldUser, "id", "cPassword", "authority", "userRole");
 
         return userRepository.save(oldUser);
     }

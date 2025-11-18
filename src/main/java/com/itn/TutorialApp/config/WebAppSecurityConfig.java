@@ -1,30 +1,35 @@
 package com.itn.TutorialApp.config;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import com.itn.TutorialApp.service.AdminDetailService;
+import com.itn.TutorialApp.service.MyUserDetailService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
-@EnableWebSecurity
+@RequiredArgsConstructor
 public class WebAppSecurityConfig {
 
-    @Autowired
-    private PasswordEncoder passwordEncoder;
+    private final PasswordEncoder passwordEncoder;
+    private final MyUserDetailService myUserDetailService;
+    private final AdminDetailService adminDetailService;
 
-    @Autowired
-    private UserDetailsService userDetailsService;
-
+    // SecurityFilterChain configuration
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http.authorizeHttpRequests(authorize -> authorize
+        http
+                .authenticationProvider(userAuthenticationProvider())
+                .authenticationProvider(adminAuthenticationProvider())
+                .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/admin/**").hasRole("ADMIN")
                         .requestMatchers("/tutor/**").hasRole("TUTOR")
                         .requestMatchers("/user/**").hasRole("USER")
@@ -35,33 +40,54 @@ public class WebAppSecurityConfig {
                         .loginProcessingUrl("/login")
                         .defaultSuccessUrl("/welcome", true)
                         .failureUrl("/login?failed")
-                        .permitAll())
+                        .permitAll()
+                )
                 .logout(logout -> logout
                         .logoutUrl("/logout")
                         .invalidateHttpSession(true)
-                        .permitAll())
-                .rememberMe(me -> me.key("my_key"))
-                .csrf(e -> e.disable());
+                        .permitAll()
+                )
+                .rememberMe(me -> me
+                        .key("my_key")
+                        .userDetailsService(myUserDetailService) // ✅ must provide UserDetailsService
+                )
+                .csrf(csrf -> csrf.disable());
 
         return http.build();
     }
 
-    public AuthenticationProvider getAuthenticationProvider() {
+    // User AuthenticationProvider
+    @Bean
+    public AuthenticationProvider userAuthenticationProvider() {
         DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
-        provider.setUserDetailsService(userDetailsService); // use autowired field
+        provider.setUserDetailsService(myUserDetailService);
         provider.setPasswordEncoder(passwordEncoder);
         return provider;
     }
 
-    @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth.authenticationProvider(getAuthenticationProvider());
+    // Admin AuthenticationProvider
+    @Bean
+    public AuthenticationProvider adminAuthenticationProvider() {
+        DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
+        provider.setUserDetailsService(adminDetailService);
+        provider.setPasswordEncoder(passwordEncoder);
+        return provider;
+    }
 
-        // Optional in-memory admin
-        auth.inMemoryAuthentication()
-                .passwordEncoder(passwordEncoder)
-                .withUser("admin")
-                .password("$2a$10$cWnl6LTOmd/KWa97YDXbV.MPc8MlQocIg4q2pCacbJ7hlpAZ8gJFq")
-                .roles("ADMIN");
+    // Optional in-memory admin
+    @Bean
+    public InMemoryUserDetailsManager inMemoryUserDetailsManager() {
+        return new InMemoryUserDetailsManager(
+                User.withUsername("admin")
+                        .password("$2a$10$cWnl6LTOmd/KWa97YDXbV.MPc8MlQocIg4q2pCacbJ7hlpAZ8gJFq")
+                        .roles("ADMIN")
+                        .build()
+        );
+    }
+
+    // Expose AuthenticationManager if needed elsewhere
+    @Bean
+    public AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {
+        return config.getAuthenticationManager();
     }
 }

@@ -16,11 +16,16 @@ public class Admin {
     private String name;
     private String username;
     private String password;
+
     @Transient
     private String cPassword;
+
     private String email;
     private String phoneNumber;
     private String address;
     private String gender;
 
+    // Fetch only what is needed to avoid lazy-loading problems
+    @OneToOne(mappedBy = "admin", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private AdminRole adminRole;
 }

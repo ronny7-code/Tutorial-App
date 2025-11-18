@@ -5,16 +5,16 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.Collection;
 import java.util.List;
 
-public class UserDetail implements UserDetails {
+public class AdminDetail implements UserDetails {
 
     private final String username;
     private final String password;
     private final String role;
 
-    public UserDetail(User user) {
-        this.username = user.getUsername();
-        this.password = user.getPassword();
-        this.role = (user.getUserRole() != null) ? user.getUserRole().getRole() : "USER";
+    public AdminDetail(Admin admin) {
+        this.username = admin.getUsername();
+        this.password = admin.getPassword();
+        this.role = (admin.getAdminRole() != null) ? admin.getAdminRole().getRole() : "ADMIN";
     }
 
     @Override

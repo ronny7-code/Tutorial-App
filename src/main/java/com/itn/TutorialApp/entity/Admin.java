@@ -23,6 +23,4 @@ public class Admin {
     private String address;
     private String gender;
 
-    @OneToOne(mappedBy = "admin", cascade = CascadeType.ALL)
-    private AdminRole adminRole;
 }

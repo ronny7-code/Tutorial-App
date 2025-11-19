@@ -26,4 +26,7 @@ public class Content {
     private String fileName;
     private LocalDate addedDate;
 
+    @ManyToOne
+    @JoinColumn(name = "courseId")
+    private Course course;
 }

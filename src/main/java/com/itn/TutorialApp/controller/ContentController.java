@@ -2,6 +2,7 @@ package com.itn.TutorialApp.controller;
 
 import com.itn.TutorialApp.entity.Content;
 import com.itn.TutorialApp.service.ContentService;
+import com.itn.TutorialApp.service.CourseService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,10 +19,12 @@ import java.time.LocalDate;
 public class ContentController {
 
     private final ContentService contentService;
+    private final CourseService courseService;
 
     @GetMapping("/admin/content/add")
     public String getContentPage(Model model){
         model.addAttribute("content", new Content()); // needed for form binding
+        model.addAttribute("courseList", courseService.findAllCourse());
         return "admin/content";
     }
 

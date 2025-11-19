@@ -1,7 +1,7 @@
 package com.itn.TutorialApp.service;
 
 import com.itn.TutorialApp.entity.Content;
-import com.itn.TutorialApp.entity.ContentRepository;
+import com.itn.TutorialApp.dao.ContentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;

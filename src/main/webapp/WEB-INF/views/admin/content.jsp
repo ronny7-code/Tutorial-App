@@ -42,8 +42,8 @@
 
 
     <h2>
-        <c:if test="${not empty course}">Update Course </c:if>
-        <c:if test="${empty course}">Create Course </c:if>
+        <c:if test="${not empty course}">Update Content </c:if>
+        <c:if test="${empty course}">Create Content </c:if>
     </h2>
 
     <c:if test="${not empty course}">
@@ -53,10 +53,10 @@
         <form action="${pageContext.request.contextPath}/admin/content/add?${_csrf.parameterName}=${_csrf.token}" method="POST" encType="multipart/form-data">
     </c:if>
 
-        <label>Course Name:</label><br>
+        <label>Content Name:</label><br>
         <input type="text" name="name" value="${content.name}" required><br><br>
 
-        <label>Category:</label><br>
+        <label>Content Type:</label><br>
         <select  name="type" required>
             <option value="WORD_DOC"> Microsoft Word Document </option>
             <option value="PDF"> PDF File </option>
@@ -64,8 +64,15 @@
         </select>
         <br> <br>
         <label>Description:</label><br>
-        <textarea name="description" rows="4" cols="50" required>${content.description}</textarea><br><br>
-
+        <textarea name="description" rows="4" cols="50" required>${content.description}</textarea>
+        <br><br>
+        <label>Course List:</label><br>
+         <select  name="course" required>
+         <c:forEach items="${courseList}" var="courses">
+          <option>Courses</option>
+          <option value="${courses.id}"> ${courses.name} </option>
+         </c:forEach>
+         </select>
          <br> <br>
                 <label>Select a file:</label><br>
                 <input type="file" name="file" placeholder="Select a file to upload.." required>
@@ -78,7 +85,7 @@
     <br>
 
     <!-- Course Table -->
-    
+
     <table border="1">
         <thead>
             <tr>

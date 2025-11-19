@@ -53,8 +53,6 @@
         <form action="${pageContext.request.contextPath}/admin/content/add?${_csrf.parameterName}=${_csrf.token}" method="POST" encType="multipart/form-data">
     </c:if>
 
-
-
         <label>Course Name:</label><br>
         <input type="text" name="name" value="${content.name}" required><br><br>
 
@@ -80,6 +78,7 @@
     <br>
 
     <!-- Course Table -->
+    
     <table border="1">
         <thead>
             <tr>

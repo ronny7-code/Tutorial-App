@@ -58,16 +58,14 @@ public class WebAppSecurityConfig {
 
     @Bean
     public AuthenticationProvider userAuthenticationProvider() {
-        DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
-        provider.setUserDetailsService(myUserDetailService);
+        DaoAuthenticationProvider provider = new DaoAuthenticationProvider(myUserDetailService);
         provider.setPasswordEncoder(passwordEncoder);
         return provider;
     }
 
     @Bean
     public AuthenticationProvider adminAuthenticationProvider() {
-        DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
-        provider.setUserDetailsService(adminDetailService);
+        DaoAuthenticationProvider provider = new DaoAuthenticationProvider(adminDetailService);
         provider.setPasswordEncoder(passwordEncoder);
         return provider;
     }

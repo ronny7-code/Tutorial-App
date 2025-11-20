@@ -78,32 +78,32 @@
                 <input type="file" name="file" placeholder="Select a file to upload.." required>
 
   <br> <br>
-        <input type="submit" value="<c:if test='${not empty course}'>Update</c:if><c:if test='${empty course}'>Submit</c:if>">
+        <input type="submit" value="<c:if test='${not empty content}'>Update</c:if><c:if test='${empty content}'>Submit</c:if>">
     </form>
     <br>
     <hr>
     <br>
 
-    <!-- Course Table -->
+    <!-- Content Table -->
 
     <table border="1">
         <thead>
             <tr>
-                <th>Course Name</th>
-                <th>Category</th>
+                <th>Content Name</th>
+                <th>Courses</th>
                 <th>Description</th>
                 <th>Edit</th>
                 <th>Delete</th>
             </tr>
         </thead>
         <tbody>
-            <c:forEach var="course" items="${courseList}">
+            <c:forEach var="contents" items="${contentList}">
                 <tr>
-                    <td>${course.name}</td>
-                     <td>${course.courseCategory.name}</td>
-                    <td>${course.description}</td>
-                    <td><a href="${pageContext.request.contextPath}/admin/course/update/${course.id}">Edit</a></td>
-                    <td><a href="${pageContext.request.contextPath}/admin/course/delete/${course.id}">Delete</a></td>
+                    <td>${contents.name}</td>
+                     <td>${contents.course.name}</td>
+                    <td>${contents.description}</td>
+                    <td><a href="${pageContext.request.contextPath}/admin/content/update/${course.id}">Edit</a></td>
+                    <td><a href="${pageContext.request.contextPath}/admin/content/delete/${course.id}">Delete</a></td>
                 </tr>
             </c:forEach>
         </tbody>

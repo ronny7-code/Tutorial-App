@@ -69,6 +69,8 @@ public class CourseController {
 
     @GetMapping("/admin/course/delete/{id}")
     public String deleteCategory(@PathVariable("id") Long id, Model model){
+        model.addAttribute("courseList", courseService.findAllCourse());
+        model.addAttribute("categoryList", courseCategoryService.findAllCourseCategories());
         courseService.deleteCourse(id);
         return "redirect:/admin/course/add?delete=success";
     }

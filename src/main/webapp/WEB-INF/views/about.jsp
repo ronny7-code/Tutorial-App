@@ -16,7 +16,7 @@
                         <h1 class="display-4">First Choice For Online Education Anywhere</h1>
                     </div>
                     <p>Learn from home from the best teachers around the world.
-                       Our free learning platform gives you access to expert-led courses, interactive lessons, and valuable resources designed to help you grow personally and professionally.
+                       Our learning platform gives you access to expert-led courses, interactive lessons, and valuable resources designed to help you grow personally and professionally.
                        Whether you’re learning a new skill or upgrading your career, this is the perfect place to start your journey. </p>
                     <div class="row pt-3 mx-0">
                         <div class="col-3 px-0">

@@ -21,10 +21,11 @@ public class AdminDetailService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Admin admin = adminRepository.findByUsername(username);
-        if (admin == null) {
-            throw new UsernameNotFoundException("Admin not found with username: " + username);
-        }
-        // Return safe AdminDetail object
-        return new AdminDetail(admin);
+        if (admin == null) throw new UsernameNotFoundException("Admin not found");
+
+        // Copy only the fields needed — no entity references
+        String role = (admin.getAdminRole() != null) ? admin.getAdminRole().getRole() : "ADMIN";
+        return new AdminDetail(admin.getUsername(), admin.getPassword(), role);
     }
+
 }

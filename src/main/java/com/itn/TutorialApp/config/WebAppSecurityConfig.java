@@ -1,34 +1,31 @@
 package com.itn.TutorialApp.config;
 
-import com.itn.TutorialApp.service.AdminDetailService;
 import com.itn.TutorialApp.service.CombinedUserDetailService;
-import com.itn.TutorialApp.service.MyUserDetailService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
-@Configuration
 @RequiredArgsConstructor
 public class WebAppSecurityConfig {
 
-    private final PasswordEncoder passwordEncoder;
-    private final MyUserDetailService myUserDetailService;
-    private final AdminDetailService adminDetailService;
-    private final CombinedUserDetailService combinedUserDetailService;
+    @Autowired
+    private  PasswordEncoder passwordEncoder;
+
+    @Autowired
+    private  CombinedUserDetailService combinedUserDetailService;
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
         http
-                .authenticationProvider(userAuthenticationProvider())
-                .authenticationProvider(adminAuthenticationProvider())
+                .authenticationProvider(authenticationProvider()) // only one provider
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/admin/**").hasRole("ADMIN")
                         .requestMatchers("/tutor/**").hasRole("TUTOR")
@@ -49,7 +46,7 @@ public class WebAppSecurityConfig {
                 )
                 .rememberMe(me -> me
                         .key("my_key")
-                        .userDetailsService(combinedUserDetailService) // ✅ use combined service here
+                        .userDetailsService(combinedUserDetailService)
                 )
                 .csrf(csrf -> csrf.disable());
 
@@ -57,29 +54,12 @@ public class WebAppSecurityConfig {
     }
 
     @Bean
-    public AuthenticationProvider userAuthenticationProvider() {
-        DaoAuthenticationProvider provider = new DaoAuthenticationProvider(myUserDetailService);
+    public DaoAuthenticationProvider authenticationProvider() {
+        DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
+        provider.setUserDetailsService(combinedUserDetailService);
         provider.setPasswordEncoder(passwordEncoder);
         return provider;
     }
-
-    @Bean
-    public AuthenticationProvider adminAuthenticationProvider() {
-        DaoAuthenticationProvider provider = new DaoAuthenticationProvider(adminDetailService);
-        provider.setPasswordEncoder(passwordEncoder);
-        return provider;
-    }
-
-    // OPTIONAL in-memory admin for testing only
-//    @Bean
-//    public InMemoryUserDetailsManager inMemoryUserDetailsManager() {
-//        return new InMemoryUserDetailsManager(
-//                User.withUsername("admin")
-//                        .password("$2a$10$cWnl6LTOmd/KWa97YDXbV.MPc8MlQocIg4q2pCacbJ7hlpAZ8gJFq")
-//                        .roles("ADMIN")
-//                        .build()
-//        );
-//    }
 
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {

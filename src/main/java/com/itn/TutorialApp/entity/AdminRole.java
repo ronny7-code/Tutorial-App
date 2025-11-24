@@ -16,6 +16,6 @@ public class AdminRole {
     private String role;
 
     @OneToOne
-    @JoinColumn(name = "adminId")
+    @JoinColumn(name = "admin_id")
     private Admin admin;
 }

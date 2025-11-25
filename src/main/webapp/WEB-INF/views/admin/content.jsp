@@ -58,6 +58,7 @@
 
         <label>Content Type:</label><br>
         <select  name="type" required>
+            <option>Select Content Type </option>
             <option value="WORD_DOC"> Microsoft Word Document </option>
             <option value="PDF"> PDF File </option>
             <option value="VIDEO"> Video Recording </option>
@@ -68,8 +69,8 @@
         <br><br>
         <label>Course List:</label><br>
          <select  name="course" required>
-         <c:forEach items="${courseList}" var="courses">
           <option>Courses</option>
+         <c:forEach items="${courseList}" var="courses">
           <option value="${courses.id}"> ${courses.name} </option>
          </c:forEach>
          </select>

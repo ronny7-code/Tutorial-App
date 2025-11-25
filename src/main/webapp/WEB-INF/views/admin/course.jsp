@@ -60,6 +60,7 @@
 
         <label>Category:</label><br>
         <select  name="category" required>
+        <option >Select Course Category</option>
          <c:forEach items="${categoryList}" var="category">
          <option value="${category.id}">${category.name}</option>
          </c:forEach>

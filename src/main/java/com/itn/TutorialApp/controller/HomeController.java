@@ -35,7 +35,7 @@ public class HomeController {
 
 	// Login page
 	@GetMapping("/login")
-	public String getLoginPage() {
+	public String getLoginPage(Model model) {
 		return "login";
 	}
 
@@ -83,7 +83,18 @@ public class HomeController {
 
 	// User profile page
 	@GetMapping("/user/profile")
-	public String getUserProfile() {
+	public String getUserProfile(Authentication authentication, Model model) {
+
+		if (authentication != null && authentication.isAuthenticated()) {
+			// Get logged-in username (usually email or username)
+			String username = authentication.getName();
+
+			// Fetch full user info from DB
+			User user = userService.findByUsername(username); // assuming you have this method
+			if (user != null) {
+				model.addAttribute("user", user);
+			}
+		}
 		return "profile";
 	}
 
@@ -101,4 +112,6 @@ public class HomeController {
 			return "redirect:/user/profile";
 		}
 	}
+
+
 }

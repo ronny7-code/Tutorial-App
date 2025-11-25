@@ -7,10 +7,7 @@ import com.itn.TutorialApp.service.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class CourseController {
@@ -74,4 +71,13 @@ public class CourseController {
         courseService.deleteCourse(id);
         return "redirect:/admin/course/add?delete=success";
     }
+
+    // User course access
+    @GetMapping("/user/course/{id}")
+    public String showCourse(@PathVariable("id") Long id, Model model){
+        Course course = courseService.findCourseById(id).orElse(new Course());
+        model.addAttribute("course", course);
+        return "courseDetail";
+    }
+
 }

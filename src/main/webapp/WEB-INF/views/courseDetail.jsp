@@ -173,6 +173,17 @@
     <script src="${pageContext.request.contextPath}/Frontend/lib/counterup/counterup.min.js"></script>
     <script src="${pageContext.request.contextPath}/Frontend/lib/owlcarousel/owl.carousel.min.js"></script>
 
+      <script>
+            const aboutLink = document.querySelector('a[href$="#about-section"]');
+            if (aboutLink) {
+                aboutLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    document.querySelector('#about-section')
+                        .scrollIntoView({ behavior: 'smooth' });
+                });
+            }
+        </script>
+
     <!-- Template Javascript -->
     <script src="${pageContext.request.contextPath}/Frontend/js/main.js"></script>
 </body>

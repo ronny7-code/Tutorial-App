@@ -39,11 +39,6 @@
     <!-- Navbar End -->
 
 
-    <!-- Header Start -->
-    <jsp:include page="header.jsp" />
-    <!-- Header End -->
-
-
     <!-- Course Start -->
     <div class="container-fluid bg-image py-5" style="margin: 90px 0;">
         <div class="container py-5">

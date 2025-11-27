@@ -61,6 +61,7 @@
             <option>Select Content Type </option>
             <option value="WORD_DOC"> Microsoft Word Document </option>
             <option value="PDF"> PDF File </option>
+            <option value="IMG"> Image File </option>
             <option value="VIDEO"> Video Recording </option>
         </select>
         <br> <br>

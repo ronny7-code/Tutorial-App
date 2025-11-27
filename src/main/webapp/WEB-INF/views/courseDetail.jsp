@@ -66,25 +66,34 @@
                     </div>
                 </div>
             </div>
+
+            <div class="row align-items-center">
+                <div class="col-lg-5 mb-5 mb-lg-0">
+             <c:forEach items="${course.content}" var="content">
+                                     <div class="row align-items-center">
+                                             <div class="col-lg-5 mb-5 mb-lg-0">
+                                                 <div class="section-title position-relative mb-4">
+                                                     <h6 class="d-inline-block position-relative text-secondary text-uppercase pb-2">${content.name}</h6>
+                                                     <h1 class="display-4">${content.type}</h1>
+                                                     <c:if test="${content.type.equals('IMG')}">
+                                                     <img src="C:\Users\bijay\Documents\Tutorial_App_Contents/${content.fileName}" height="200px" width="200px" alt="content image"/>
+                                                     </c:if>
+                                                 </div>.
+                                                 <p class="m-0">${content.description}</p>
+                                                  <p class="m-0"> content </p>
+                                             </div>
+                                     </div>
+                                 </c:forEach>
+                                 </div>
+                                 </div>
         </div>
     </div>
-        <c:forEach items="${course.content}" var="content">
-            <div class="row align-items-center">
-                    <div class="col-lg-5 mb-5 mb-lg-0">
-                        <div class="section-title position-relative mb-4">
-                            <h6 class="d-inline-block position-relative text-secondary text-uppercase pb-2">${content.name}</h6>
-                            <h1 class="display-4">${content.type}</h1>
-                        </div>.
-                        <p class="m-0">${content.description}</p>
-                         <p class="m-0"> content </p>
-                    </div>
-            </div>
-        </c:forEach>
+
     <!-- course End -->
 
     <!-- About Start -->
         <div id="about-section">
-             <jsp:include page="about.jsp" />
+
         </div>
     <!-- About End -->
 

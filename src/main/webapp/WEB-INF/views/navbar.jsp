@@ -14,17 +14,18 @@
                 <div class="navbar-nav mx-auto py-0">
                     <a href="${pageContext.request.contextPath}/home" class="nav-item nav-link active">Home</a>
                     <a href="#about-section" class="nav-item nav-link">About</a>
-                    <a href="course.html" class="nav-item nav-link">Courses</a>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
-                        <div class="dropdown-menu m-0">
-                            <a href="detail.html" class="dropdown-item">Course Detail</a>
-                            <a href="feature.html" class="dropdown-item">Our Features</a>
-                            <a href="team.html" class="dropdown-item">Instructors</a>
-                            <a href="testimonial.html" class="dropdown-item">Testimonial</a>
-                        </div>
-                    </div>
-                    <a href="contact.html" class="nav-item nav-link">Contact</a>
+                    <a href="#courses-section" class="nav-item nav-link">Courses</a>
+                  <div class="nav-item dropdown">
+                      <a href="#" class="nav-link dropdown-toggle" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Pages
+                      </a>
+                      <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+                          <a href="#feature-section" class="dropdown-item scroll-link">Our Features</a>
+                          <a href="#team-section" class="dropdown-item scroll-link">Instructors</a>
+                          <a href="#testimonial-section" class="dropdown-item scroll-link">Testimonial</a>
+                      </div>
+                  </div>
+                    <a href="#contact-section" class="nav-item nav-link">Contact</a>
                 </div>
                 <a href="${pageContext.request.contextPath}/login" class="btn btn-primary py-2 px-4 d-none d-lg-block">Login</a>
             </div>

@@ -24,7 +24,7 @@ public class ContentController {
 
     @GetMapping("/admin/content/add")
     public String getContentPage(Model model){
-        model.addAttribute("contentList", contentService.getAllContents()); 
+        model.addAttribute("contentList", contentService.getAllContents());
         model.addAttribute("courseList", courseService.findAllCourse());
         return "admin/content";
     }
@@ -34,7 +34,8 @@ public class ContentController {
     public String saveContent(@RequestParam String name,
                               @RequestParam String type,
                               @RequestParam String description,
-                              @RequestParam MultipartFile file){
+                              @RequestParam MultipartFile file,
+                              @RequestParam Course course){
         Content content = new Content();
         content.setName(name);
         content.setType(type);
@@ -42,12 +43,13 @@ public class ContentController {
         //content.setFile(file);  // do not save file into database
         content.setFileName(file.getOriginalFilename());
         content.setAddedDate(LocalDate.now());
+        content.setCourse(course);
 
         // send to upload the content file
         contentService.uploadContent(file);
         // after upload save content object into database
         contentService.addContent(content);
-        return "redirect:/admin/content/show";
+        return "redirect:/admin/content/add?success=true";
     }
 
     @GetMapping("/admin/content/update/{id}")

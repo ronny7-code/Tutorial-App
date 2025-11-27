@@ -25,7 +25,7 @@ public class Course {
     @JoinColumn(name = "categoryId", nullable = false)
     private CourseCategory courseCategory;
 
-    @OneToMany(mappedBy = "course")
+    @OneToMany(mappedBy = "course", fetch = FetchType.EAGER)
     private List<Content> content;
 
 }

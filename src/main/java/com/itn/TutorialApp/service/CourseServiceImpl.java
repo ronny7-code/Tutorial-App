@@ -35,13 +35,28 @@ public class CourseServiceImpl implements CourseService{
     @Override
     @Transactional
     public Course updateCourse(Long courseId, Course updatedCourse) {
-        Course oldcourse = courseRepository.findById(courseId).orElseThrow(() -> new EntityNotFoundException("Course not found with id: " + courseId));
-        oldcourse.setName(updatedCourse.getName());
-        oldcourse.setDescription(updatedCourse.getDescription());
-        oldcourse.setCourseCategory(updatedCourse.getCourseCategory());
+        Course oldCourse = courseRepository.findById(courseId)
+                .orElseThrow(() -> new EntityNotFoundException("Course not found with id: " + courseId));
 
-        return courseRepository.save(oldcourse);
+        oldCourse.setName(updatedCourse.getName());
+        oldCourse.setDescription(updatedCourse.getDescription());
+        oldCourse.setCourseCategory(updatedCourse.getCourseCategory());
+
+        // Handle content
+        if (updatedCourse.getContent() != null) {
+            // Clear old content that are removed (orphanRemoval will delete them)
+            oldCourse.getContent().clear();
+
+            // Add updated content and set course reference
+            for (var content : updatedCourse.getContent()) {
+                content.setCourse(oldCourse);
+                oldCourse.getContent().add(content);
+            }
+        }
+
+        return courseRepository.save(oldCourse);
     }
+
 
     @Override
     @Transactional

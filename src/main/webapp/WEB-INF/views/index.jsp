@@ -51,11 +51,14 @@
 
 
     <!-- Feature Start -->
-    <jsp:include page="feature.jsp" />
+    <div id="feature-section">
+         <jsp:include page="feature.jsp" />
+    </div>
     <!-- Feature Start -->
 
 
     <!-- Courses Start -->
+<div id="courses-section">
    <div class="container-fluid px-0 py-5">
        <div class="row mx-0 justify-content-center pt-5">
            <div class="col-lg-6">
@@ -96,16 +99,19 @@
 
        </div>
    </div>
-
+</div>
     <!-- Courses End -->
 
 
     <!-- Team Start -->
-   <jsp:include page="team.jsp"/>
+    <div id="team-section">
+         <jsp:include page="team.jsp"/>
+   </div>
     <!-- Team End -->
 
 
     <!-- Testimonial Start -->
+<div id="testimonial-section">
     <div class="container-fluid bg-image py-5" style="margin: 90px 0;">
         <div class="container py-5">
             <div class="row align-items-center">
@@ -145,10 +151,12 @@
             </div>
         </div>
     </div>
+</div>
     <!-- Testimonial End -->
 
 
     <!-- Contact Start -->
+<div id="contact-section">
     <div class="container-fluid py-5">
         <div class="container py-5">
             <div class="row align-items-center">
@@ -213,6 +221,7 @@
             </div>
         </div>
     </div>
+</div>
     <!-- Contact End -->
 
 
@@ -232,16 +241,26 @@
     <script src="${pageContext.request.contextPath}/Frontend/lib/waypoints/waypoints.min.js"></script>
     <script src="${pageContext.request.contextPath}/Frontend/lib/counterup/counterup.min.js"></script>
     <script src="${pageContext.request.contextPath}/Frontend/lib/owlcarousel/owl.carousel.min.js"></script>
-    <script>
-        const aboutLink = document.querySelector('a[href$="#about-section"]');
-        if (aboutLink) {
-            aboutLink.addEventListener('click', function(e) {
-                e.preventDefault();
-                document.querySelector('#about-section')
-                    .scrollIntoView({ behavior: 'smooth' });
-            });
+
+<script>
+$(document).ready(function() {
+    // Smooth scroll for all links with hash or scroll-link class
+    $('a[href^="#"], .scroll-link').on('click', function(e) {
+        var target = this.hash;
+        if (target) {
+            e.preventDefault();
+
+            // Close any open dropdown
+            $(this).closest('.dropdown-menu').removeClass('show');
+            $(this).closest('.dropdown').removeClass('show');
+
+            $('html, body').animate({
+                scrollTop: $(target).offset().top
+            }, 800); // 800ms smooth scroll
         }
-    </script>
+    });
+});
+</script>
 
 
     <!-- Template Javascript -->

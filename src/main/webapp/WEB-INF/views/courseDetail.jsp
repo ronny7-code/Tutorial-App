@@ -45,17 +45,16 @@
             <div class="row align-items-center">
                 <div class="col-lg-5 mb-5 mb-lg-0">
                     <div class="section-title position-relative mb-4">
-                        <h6 class="d-inline-block position-relative text-secondary text-uppercase pb-2">${course.name}/${course.courseCategory.name}</h6>
-                        <h1 class="display-4">${course.courseCategory.type}</h1>
+                        <h6 class="d-inline-block position-relative text-secondary text-uppercase pb-2">${course.courseCategory.type}/${course.courseCategory.name}</h6>
+                        <h1 class="display-4">${course.name}</h1>
                     </div>.
-                    <p class="m-0">${course.description}</p>
                      <p class="m-0">${course.courseCategory.description}</p>
                 </div>
                 <div class="col-lg-7">
                     <div class="section-title position-relative mb-4">
                         <div class="bg-white p-5">
                             <i class="fa fa-3x fa-quote-left text-primary mb-4"></i>
-                            <p> Progress </p>
+                            <p>${course.description}</p>
                             <div class="d-flex flex-shrink-0 align-items-center mt-4">
                                 <img class="img-fluid mr-4" src="${pageContext.request.contextPath}/Frontend/img/testimonial-2.jpg" alt="">
                                 <div>
@@ -83,6 +82,11 @@
         </c:forEach>
     <!-- course End -->
 
+    <!-- About Start -->
+        <div id="about-section">
+             <jsp:include page="about.jsp" />
+        </div>
+    <!-- About End -->
 
     <!-- Contact Start -->
     <div class="container-fluid py-5">

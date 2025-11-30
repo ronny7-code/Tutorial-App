@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 
+ <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
  <div class="container-fluid position-relative overlay-top bg-dark text-white-50 py-5" style="margin-top: 90px;">
         <div class="container mt-5 pt-5">
             <div class="row">
@@ -9,7 +11,7 @@
                     <a href="index.html" class="navbar-brand">
                         <h1 class="mt-n2 text-uppercase text-white"><i class="fa fa-book-reader mr-3"></i>eLearning Hub</h1>
                     </a>
-                    <p class="m-0">Accusam nonumy clita sed rebum kasd eirmod elitr. Ipsum ea lorem at et diam est, tempor rebum ipsum sit ea tempor stet et consetetur dolores. Justo stet diam ipsum lorem vero clita diam</p>
+                    <p class="m-0">Learn anytime, anywhere. Explore our wide range of online courses designed to upgrade your skills</p>
                 </div>
                 <div class="col-md-6 mb-5">
                     <h3 class="text-white mb-4">Newsletter</h3>
@@ -27,33 +29,34 @@
                 <div class="col-md-4 mb-5">
                     <h3 class="text-white mb-4">Get In Touch</h3>
                     <p><i class="fa fa-map-marker-alt mr-2"></i>Kathmandu, Nepal</p>
-                    <p><i class="fa fa-phone-alt mr-2"></i>+977 9741875904</p>
-                    <p><i class="fa fa-envelope mr-2"></i>bijay98813@gmail.com</p>
+                    <p><i class="fa fa-phone-alt mr-2"></i>+977 9800000000</p>
+                    <p><i class="fa fa-envelope mr-2"></i>eLearning@gmail.com</p>
                     <div class="d-flex justify-content-start mt-4">
                         <a class="text-white mr-4" href="#"><i class="fab fa-2x fa-twitter"></i></a>
-                        <a class="text-white mr-4" href="https://www.facebook.com/profile.php?id=100056153836682"><i class="fab fa-2x fa-facebook-f"></i></a>
+                        <a class="text-white mr-4" href="https://www.facebook.com"><i class="fab fa-2x fa-facebook-f"></i></a>
                         <a class="text-white mr-4" href="#"><i class="fab fa-2x fa-linkedin-in"></i></a>
-                        <a class="text-white" href="https://www.instagram.com/bijaybln?igsh=cGluYzIyZ3FzcTRh"><i class="fab fa-2x fa-instagram"></i></a>
+                        <a class="text-white" href="https://www.instagram.com"><i class="fab fa-2x fa-instagram"></i></a>
                     </div>
                 </div>
                 <div class="col-md-4 mb-5">
                     <h3 class="text-white mb-4">Our Courses</h3>
                     <div class="d-flex flex-column justify-content-start">
-                        <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Web Design</a>
-                        <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Apps Design</a>
-                        <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Backend</a>
-                        <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>AI ML</a>
-                        <a class="text-white-50" href="#"><i class="fa fa-angle-right mr-2"></i>Cyber Security</a>
+
+                        <c:forEach items="${courseList}" var="courses">
+                            <a class="text-white-50 mb-2" href="${pageContext.request.contextPath}/course/${courses.id}"><i class="fa fa-angle-right mr-2"></i>${courses.name}</a>
+                        </c:forEach>
+
                     </div>
                 </div>
+
                 <div class="col-md-4 mb-5">
                     <h3 class="text-white mb-4">Quick Links</h3>
                     <div class="d-flex flex-column justify-content-start">
-                        <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Privacy Policy</a>
-                        <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Terms & Condition</a>
-                        <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Regular FAQs</a>
-                        <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Help & Support</a>
-                        <a class="text-white-50" href="#"><i class="fa fa-angle-right mr-2"></i>Contact</a>
+                            <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Privacy Policy</a>
+                            <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Terms & Condition</a>
+                            <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Regular FAQs</a>
+                            <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Help & Support</a>
+                            <a class="text-white-50" href="#"><i class="fa fa-angle-right mr-2"></i>Contact</a>
                     </div>
                 </div>
             </div>

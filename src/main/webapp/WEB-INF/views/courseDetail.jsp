@@ -80,7 +80,7 @@
                                                      </c:if>
                                                  </div>.
                                                  <p class="m-0">${content.description}</p>
-                                                  <p class="m-0"> content </p>
+                                                  <p class="m-0"> ${content.name} </p>
                                              </div>
                                      </div>
                                  </c:forEach>

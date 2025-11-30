@@ -2,22 +2,19 @@ package com.itn.TutorialApp.service;
 
 import com.itn.TutorialApp.dao.UserRepository;
 import com.itn.TutorialApp.entity.User;
-import com.itn.TutorialApp.entity.UserRole;
-import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserRepository userRepository;
-
 
     @Override
     @Transactional
@@ -41,20 +38,25 @@ public class UserServiceImpl implements UserService{
         userRepository.deleteById(id);
     }
 
+    @Override
     @Transactional
-    public User updateUser(User updatedUser, Long id) {
-        User oldUser = userRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("User not found with id: " + id));
+    public void updateUser(User updatedUser) {
 
+        User user = userRepository.findById(updatedUser.getId())
+                .orElseThrow(() -> new UsernameNotFoundException("User not found with id:" + updatedUser.getId()));
 
-        BeanUtils.copyProperties(updatedUser, oldUser, "id", "cPassword", "authority", "userRole");
+        user.setFirstName(updatedUser.getFirstName());
+        user.setLastName(updatedUser.getLastName());
+        user.setPhoneNumber(updatedUser.getPhoneNumber());
+        user.setAddress(updatedUser.getAddress());
+        user.setGender(updatedUser.getGender());
+        user.setDOB(updatedUser.getDOB());
 
-        return userRepository.save(oldUser);
+        userRepository.save(user);
     }
 
     @Override
     public User findByUsername(String username) {
         return userRepository.findUserByUsername(username);
     }
-
 }

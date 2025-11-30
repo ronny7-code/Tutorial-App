@@ -56,60 +56,6 @@
     </div>
     <!-- Feature Start -->
 
-
-    <!-- Courses Start -->
-<div id="courses-section">
-   <div class="container-fluid px-0 py-5">
-       <div class="row mx-0 justify-content-center pt-5">
-           <div class="col-lg-6">
-               <div class="section-title text-center position-relative mb-4">
-                   <h6 class="d-inline-block position-relative text-secondary text-uppercase pb-2">Our Courses</h6>
-                   <h1 class="display-4">Checkout New Releases Of Our Courses</h1>
-               </div>
-           </div>
-       </div>
-
-       <div class="owl-carousel courses-carousel">
-
-           <c:forEach items="${courseList}" var="courses">
-
-               <div class="courses-item position-relative">
-                   <img class="img-fluid" src="${pageContext.request.contextPath}/Frontend/img/courses-1.jpg" alt="">
-                   <div class="courses-text">
-
-                       <h4 class="text-center text-white px-3">${courses.name}</h4>
-
-                       <div class="border-top w-100 mt-3">
-                           <div class="d-flex justify-content-between p-4">
-                               <span class="text-white"><i class="fa fa-user mr-2"></i>${courses.description}</span>
-                           </div>
-                       </div>
-
-                       <div class="w-100 bg-white text-center p-4">
-                           <a class="btn btn-primary" href="${pageContext.request.contextPath}/course/${courses.id}">
-                               Course Detail
-                           </a>
-                       </div>
-
-                   </div>
-               </div>
-
-           </c:forEach>
-
-
-       </div>
-   </div>
-</div>
-    <!-- Courses End -->
-
-
-    <!-- Team Start -->
-    <div id="team-section">
-         <jsp:include page="team.jsp"/>
-   </div>
-    <!-- Team End -->
-
-
     <!-- Testimonial Start -->
 <div id="testimonial-section">
     <div class="container-fluid bg-image py-5" style="margin: 90px 0;">

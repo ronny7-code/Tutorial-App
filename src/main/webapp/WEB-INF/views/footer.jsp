@@ -1,77 +1,85 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 
- <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<div class="container-fluid position-relative overlay-top bg-dark text-white-50 py-5" style="margin-top: 90px;">
+    <div class="container mt-5 pt-5">
+        <div class="row">
+            <!-- Left Column: Branding + Description -->
+            <div class="col-md-6 mb-5">
+                <a href="${pageContext.request.contextPath}/home" class="navbar-brand">
+                    <h1 class="mt-n2 text-uppercase text-white"><i class="fa fa-book-reader mr-3"></i>eLearning Hub</h1>
+                </a>
+                <p class="m-0">Learn anytime, anywhere. Explore our wide range of online courses designed to upgrade your skills</p>
+            </div>
 
- <div class="container-fluid position-relative overlay-top bg-dark text-white-50 py-5" style="margin-top: 90px;">
-        <div class="container mt-5 pt-5">
-            <div class="row">
-                <div class="col-md-6 mb-5">
-                    <a href="index.html" class="navbar-brand">
-                        <h1 class="mt-n2 text-uppercase text-white"><i class="fa fa-book-reader mr-3"></i>eLearning Hub</h1>
-                    </a>
-                    <p class="m-0">Learn anytime, anywhere. Explore our wide range of online courses designed to upgrade your skills</p>
-                </div>
-                <div class="col-md-6 mb-5">
-                    <h3 class="text-white mb-4">Newsletter</h3>
-                    <div class="w-100">
-                        <div class="input-group">
-                            <input type="text" class="form-control border-light" style="padding: 30px;" placeholder="Your Email Address">
-                            <div class="input-group-append">
-                                <button class="btn btn-primary px-4">Sign Up</button>
-                            </div>
+            <!-- Right Column: Newsletter -->
+            <div class="col-md-6 mb-5">
+                <h3 class="text-white mb-4">Newsletter</h3>
+                <div class="w-100">
+                    <div class="input-group">
+                        <input type="text" class="form-control border-light" style="padding: 30px;" placeholder="Your Email Address">
+                        <div class="input-group-append">
+                            <button class="btn btn-primary px-4">Sign Up</button>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-4 mb-5">
-                    <h3 class="text-white mb-4">Get In Touch</h3>
-                    <p><i class="fa fa-map-marker-alt mr-2"></i>Kathmandu, Nepal</p>
-                    <p><i class="fa fa-phone-alt mr-2"></i>+977 9800000000</p>
-                    <p><i class="fa fa-envelope mr-2"></i>eLearning@gmail.com</p>
-                    <div class="d-flex justify-content-start mt-4">
-                        <a class="text-white mr-4" href="#"><i class="fab fa-2x fa-twitter"></i></a>
-                        <a class="text-white mr-4" href="https://www.facebook.com"><i class="fab fa-2x fa-facebook-f"></i></a>
-                        <a class="text-white mr-4" href="#"><i class="fab fa-2x fa-linkedin-in"></i></a>
-                        <a class="text-white" href="https://www.instagram.com"><i class="fab fa-2x fa-instagram"></i></a>
-                    </div>
+        </div>
+
+        <div class="row">
+            <!-- Contact Info -->
+            <div class="col-md-4 mb-5">
+                <h3 class="text-white mb-4">Get In Touch</h3>
+                <p><i class="fa fa-map-marker-alt mr-2"></i>Kathmandu, Nepal</p>
+                <p><i class="fa fa-phone-alt mr-2"></i>+977 9800000000</p>
+                <p><i class="fa fa-envelope mr-2"></i>eLearning@gmail.com</p>
+                <div class="d-flex justify-content-start mt-4">
+                    <a class="text-white mr-4" href="#"><i class="fab fa-2x fa-twitter"></i></a>
+                    <a class="text-white mr-4" href="https://www.facebook.com"><i class="fab fa-2x fa-facebook-f"></i></a>
+                    <a class="text-white mr-4" href="#"><i class="fab fa-2x fa-linkedin-in"></i></a>
+                    <a class="text-white" href="https://www.instagram.com"><i class="fab fa-2x fa-instagram"></i></a>
                 </div>
-                <div class="col-md-4 mb-5">
-                    <h3 class="text-white mb-4">Our Courses</h3>
-                    <div class="d-flex flex-column justify-content-start">
+            </div>
 
-                        <c:forEach items="${courseList}" var="courses">
-                            <a class="text-white-50 mb-2" href="${pageContext.request.contextPath}/course/${courses.id}"><i class="fa fa-angle-right mr-2"></i>${courses.name}</a>
-                        </c:forEach>
-
-                    </div>
+            <!-- Courses Section -->
+            <div id="courses-section" class="col-md-4 mb-5">
+                <h3 class="text-white mb-4">Our Courses</h3>
+                <div class="d-flex flex-column justify-content-start">
+                    <c:forEach items="${courseList}" var="course">
+                        <a class="text-white-50 mb-2" href="${pageContext.request.contextPath}/user/course/${course.id}">
+                            <i class="fa fa-angle-right mr-2"></i>${course.name}
+                        </a>
+                    </c:forEach>
                 </div>
+            </div>
 
-                <div class="col-md-4 mb-5">
-                    <h3 class="text-white mb-4">Quick Links</h3>
-                    <div class="d-flex flex-column justify-content-start">
-                            <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Privacy Policy</a>
-                            <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Terms & Condition</a>
-                            <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Regular FAQs</a>
-                            <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Help & Support</a>
-                            <a class="text-white-50" href="#"><i class="fa fa-angle-right mr-2"></i>Contact</a>
-                    </div>
+            <!-- Quick Links -->
+            <div class="col-md-4 mb-5">
+                <h3 class="text-white mb-4">Quick Links</h3>
+                <div class="d-flex flex-column justify-content-start">
+                    <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Privacy Policy</a>
+                    <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Terms & Condition</a>
+                    <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Regular FAQs</a>
+                    <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Help & Support</a>
+                    <a class="text-white-50" href="#"><i class="fa fa-angle-right mr-2"></i>Contact</a>
                 </div>
             </div>
         </div>
     </div>
-    <div class="container-fluid bg-dark text-white-50 border-top py-4" style="border-color: rgba(256, 256, 256, .1) !important;">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6 text-center text-md-left mb-3 mb-md-0">
-                    <p class="m-0">Copyright &copy; <a class="text-white" href="#">JCode Pvt. Ltd.</a>. All Rights Reserved.
-                    </p>
-                </div>
-                <div class="col-md-6 text-center text-md-right">
-                    <p class="m-0">Designed by <a class="text-white" href="https://htmlcodex.com">HTML Codex</a> Distributed by <a href="https://themewagon.com" target="_blank">ThemeWagon</a></p>
-                </div>
+</div>
+
+<!-- Footer Bottom -->
+<div class="container-fluid bg-dark text-white-50 border-top py-4" style="border-color: rgba(256, 256, 256, .1) !important;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 text-center text-md-left mb-3 mb-md-0">
+                <p class="m-0">Copyright &copy; <a class="text-white" href="#">JCode Pvt. Ltd.</a>. All Rights Reserved.</p>
+            </div>
+            <div class="col-md-6 text-center text-md-right">
+                <p class="m-0">Designed by <a class="text-white" href="https://htmlcodex.com">HTML Codex</a> Distributed by <a href="https://themewagon.com" target="_blank">ThemeWagon</a></p>
             </div>
         </div>
     </div>
+</div>

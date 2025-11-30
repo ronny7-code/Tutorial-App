@@ -3,6 +3,7 @@ package com.itn.TutorialApp.controller;
 import com.itn.TutorialApp.entity.User;
 import com.itn.TutorialApp.entity.UserRole;
 import com.itn.TutorialApp.service.CourseService;
+import com.itn.TutorialApp.service.InstructorService;
 import com.itn.TutorialApp.service.UserService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,7 @@ public class HomeController {
 
 	@Autowired
 	private PasswordEncoder passwordEncoder;
+
 
 	// Home page
 	@GetMapping({"/", "/home"})
@@ -79,23 +81,6 @@ public class HomeController {
 	public String logoutUser(HttpSession session) {
 		session.invalidate();
 		return "redirect:/login";
-	}
-
-	// User profile page
-	@GetMapping("/user/profile")
-	public String getUserProfile(Authentication authentication, Model model) {
-
-		if (authentication != null && authentication.isAuthenticated()) {
-			// Get logged-in username (usually email or username)
-			String username = authentication.getName();
-
-			// Fetch full user info from DB
-			User user = userService.findByUsername(username); // assuming you have this method
-			if (user != null) {
-				model.addAttribute("user", user);
-			}
-		}
-		return "profile";
 	}
 
 	// Welcome page redirect based on role

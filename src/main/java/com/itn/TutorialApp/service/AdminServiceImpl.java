@@ -2,15 +2,15 @@ package com.itn.TutorialApp.service;
 
 import com.itn.TutorialApp.dao.AdminRepository;
 import com.itn.TutorialApp.entity.Admin;
-import com.itn.TutorialApp.entity.User;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class AdminServiceImpl implements AdminService{
 
     @Autowired
@@ -40,13 +40,22 @@ public class AdminServiceImpl implements AdminService{
 
     @Override
     @Transactional
-    public Admin updateAdmin(Admin admin, Long id) {
-        Admin oldAdmin = adminRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("Admin not found with id: " + id));
+    public void updateAdmin(Admin updatedAdmin) {
 
+        Admin admin = adminRepository.findById(updatedAdmin.getId())
+                .orElseThrow(() -> new EntityNotFoundException(
+                        "Admin not found with id: " + updatedAdmin.getId()
+                ));
 
-        BeanUtils.copyProperties(admin, oldAdmin, "id", "cPassword", "adminRole");
+        // Update only editable fields
+        admin.setName(updatedAdmin.getName());
+        admin.setEmail(updatedAdmin.getEmail());
+        admin.setUsername(updatedAdmin.getUsername());
+        admin.setPhoneNumber(updatedAdmin.getPhoneNumber());
+        admin.setAddress(updatedAdmin.getAddress());
+        admin.setGender(updatedAdmin.getGender());
 
-        return adminRepository.save(oldAdmin);
+        adminRepository.save(admin);
     }
+
 }

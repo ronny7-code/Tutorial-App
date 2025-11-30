@@ -21,7 +21,6 @@
                       </a>
                       <div class="dropdown-menu" aria-labelledby="pagesDropdown">
                           <a href="#feature-section" class="dropdown-item scroll-link">Our Features</a>
-                          <a href="#team-section" class="dropdown-item scroll-link">Instructors</a>
                           <a href="#testimonial-section" class="dropdown-item scroll-link">Testimonial</a>
                       </div>
                   </div>

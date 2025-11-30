@@ -73,10 +73,11 @@ public class CourseController {
     }
 
     // User course access
-    @GetMapping("/course/{id}")
+    @GetMapping("/user/course/{id}")
     public String showCourse(@PathVariable("id") Long id, Model model){
         Course course = courseService.findCourseById(id).orElse(new Course());
         model.addAttribute("course", course);
+        model.addAttribute("courseList", courseService.findAllCourse());
         return "courseDetail";
     }
 

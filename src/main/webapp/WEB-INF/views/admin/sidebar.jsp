@@ -9,7 +9,7 @@
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">Tutorial Admin <sup>2</sup></div>
+                <div class="sidebar-brand-text mx-3">eLearning Admin <sup>2</sup></div>
             </a>
 
             <!-- Divider -->
@@ -30,7 +30,7 @@
                 Interface
             </div>
 
-            <!-- Nav Item - Pages Collapse Menu -->
+            <!-- Nav Item - Course Menu -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
@@ -51,13 +51,13 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
                     aria-expanded="true" aria-controls="collapseUtilities">
                     <i class="fas fa-fw fa-wrench"></i>
-                    <span>Admin Related</span>
+                    <span>Admin</span>
                 </a>
                 <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Admin:</h6>
-                        <a class="collapse-item" href="${pageContext.request.contextPath}/admin/add">Add New </a>
+                      <h6 class="collapse-header">Admin Related:</h6>
+                        <a class="collapse-item" href="${pageContext.request.contextPath}/admin/add">Add New Admin</a>
                     </div>
                 </div>
             </li>
@@ -70,38 +70,37 @@
                 Addons
             </div>
 
-            <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
-                    aria-expanded="true" aria-controls="collapsePages">
-                    <i class="fas fa-fw fa-folder"></i>
-                    <span>Content Related</span>
-                </a>
-                <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Content:</h6>
-                        <a class="collapse-item" href="${pageContext.request.contextPath}/admin/content/add">Add New</a>
-                        <div class="collapse-divider"></div>
-                        <h6 class="collapse-header">Other Pages:</h6>
-                        <a class="collapse-item" href="404.html">404 Page</a>
-                        <a class="collapse-item" href="blank.html">Blank Page</a>
-                    </div>
-                </div>
-            </li>
+           <!-- Nav Item - Content Menu -->
+           <li class="nav-item">
+               <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseContent"
+                  aria-expanded="true" aria-controls="collapseContent">
+                   <i class="fas fa-fw fa-folder"></i>
+                   <span>Content</span>
+               </a>
+               <div id="collapseContent" class="collapse" aria-labelledby="headingContent" data-parent="#accordionSidebar">
+                   <div class="bg-white py-2 collapse-inner rounded">
+                       <h6 class="collapse-header">Content Related:</h6>
+                       <a class="collapse-item" href="${pageContext.request.contextPath}/admin/content/add">Add New Content</a>
+                   </div>
+               </div>
+           </li>
 
-            <!-- Nav Item - Charts -->
-            <li class="nav-item">
-                <a class="nav-link" href="charts.html">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Charts</span></a>
-            </li>
+           <!-- Nav Item - Instructor Menu -->
+           <li class="nav-item">
+               <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseInstructor"
+                  aria-expanded="true" aria-controls="collapseInstructor">
+                   <i class="fas fa-fw fa-chalkboard-teacher"></i>
+                   <span>Instructor</span>
+               </a>
+               <div id="collapseInstructor" class="collapse" aria-labelledby="headingInstructor" data-parent="#accordionSidebar">
+                   <div class="bg-white py-2 collapse-inner rounded">
+                       <h6 class="collapse-header">Instructor Related:</h6>
+                       <a class="collapse-item" href="${pageContext.request.contextPath}/admin/instructor/add">Add New Instructor</a>
+                   </div>
+               </div>
+           </li>
 
-            <!-- Nav Item - Tables -->
-            <li class="nav-item">
-                <a class="nav-link" href="tables.html">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Tables</span></a>
-            </li>
+
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">

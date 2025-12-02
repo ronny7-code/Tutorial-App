@@ -1,11 +1,14 @@
 package com.itn.TutorialApp.controller;
 
 import com.itn.TutorialApp.dao.AdminRepository;
+import com.itn.TutorialApp.dao.MessageFromUserRepository;
 import com.itn.TutorialApp.entity.Admin;
 import com.itn.TutorialApp.entity.AdminRole;
+import com.itn.TutorialApp.entity.MessageFromUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,6 +18,9 @@ public class AdminController {
 
 	@Autowired
 	private AdminRepository adminRepository;
+
+	@Autowired
+	private MessageFromUserRepository messageRepo;
 
 	@Autowired
 	private PasswordEncoder passwordEncoder;
@@ -53,5 +59,19 @@ public class AdminController {
 		// 5️⃣ Redirect with success message
 		return "redirect:/admin/add?success";
 	}
+
+	@PostMapping("/contact/message")
+	public String messageFromTheUser(@ModelAttribute MessageFromUser message) {
+		messageRepo.save(message);
+		return "redirect:/home?messageSent=true";
+	}
+
+
+	@GetMapping("/admin/contact/message")
+	public String getMessage(Model model){
+		model.addAttribute("messages", messageRepo.findAll());
+		return "admin/messageFromUser";
+	}
+
 
 }

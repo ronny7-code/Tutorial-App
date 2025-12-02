@@ -100,7 +100,20 @@
                </div>
            </li>
 
-
+          <!-- Nav Item - Message Menu -->
+          <li class="nav-item">
+              <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseMessage"
+                 aria-expanded="true" aria-controls="collapseMessage">
+                  <i class="fas fa-fw fa-envelope"></i>
+                  <span>Message</span>
+              </a>
+              <div id="collapseMessage" class="collapse" aria-labelledby="headingMessage" data-parent="#accordionSidebar">
+                  <div class="bg-white py-2 collapse-inner rounded">
+                      <h6 class="collapse-header">Messages from the Users:</h6>
+                      <a class="collapse-item" href="${pageContext.request.contextPath}/admin/contact/message">See Messages</a>
+                  </div>
+              </div>
+          </li>
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">

@@ -28,4 +28,6 @@ public class Course {
     @OneToMany(mappedBy = "course", fetch = FetchType.EAGER)
     private List<Content> content;
 
+    private double price;
+
 }

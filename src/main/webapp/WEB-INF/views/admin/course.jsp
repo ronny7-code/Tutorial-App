@@ -65,6 +65,10 @@
          <option value="${category.id}">${category.name}</option>
          </c:forEach>
         </select>
+        <br><br>
+        <label>Price:</label><br>
+        <input type="text" name="price" value="${course.price}" required><br><br>
+
         <br> <br>
         <label>Description:</label><br>
         <textarea name="description" rows="4" cols="50" required>${course.description}</textarea><br><br>
@@ -81,6 +85,7 @@
             <tr>
                 <th>Course Name</th>
                 <th>Category</th>
+                <th>Price</th>
                 <th>Description</th>
                 <th>Edit</th>
                 <th>Delete</th>
@@ -91,6 +96,7 @@
                 <tr>
                     <td>${course.name}</td>
                      <td>${course.courseCategory.name}</td>
+                     <td>${course.price}</td>
                     <td>${course.description}</td>
                     <td><a href="${pageContext.request.contextPath}/admin/course/update/${course.id}">Edit</a></td>
                     <td><a href="${pageContext.request.contextPath}/admin/course/delete/${course.id}">Delete</a></td>

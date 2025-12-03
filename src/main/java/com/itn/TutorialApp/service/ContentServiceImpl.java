@@ -64,7 +64,7 @@ public class ContentServiceImpl implements ContentService{
     public void uploadContent(MultipartFile file) {
         try {
             String fileName = file.getOriginalFilename();
-            Path path = Paths.get("C://" + fileName);
+            Path path = Paths.get("C://Users//bijay//Documents//Tutorial_App_Contents//" + fileName);
             Files.createDirectories(path.getParent());
             Files.copy(file.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);
 

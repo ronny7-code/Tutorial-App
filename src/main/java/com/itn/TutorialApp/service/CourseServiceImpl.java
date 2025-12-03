@@ -41,6 +41,7 @@ public class CourseServiceImpl implements CourseService{
         oldCourse.setName(updatedCourse.getName());
         oldCourse.setDescription(updatedCourse.getDescription());
         oldCourse.setCourseCategory(updatedCourse.getCourseCategory());
+        oldCourse.setPrice(updatedCourse.getPrice());
 
         // Handle content
         if (updatedCourse.getContent() != null) {

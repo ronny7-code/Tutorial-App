@@ -143,7 +143,7 @@
             <c:forEach items="${instructorList}" var="instructor">
                 <div class="col-lg-3 col-md-4 mb-4">
                     <div class="card instructor-card shadow-sm">
-                        <img src="${pageContext.request.contextPath}/Frontend/img/me.jpg" alt="${instructor.name}">
+                        <img src="${pageContext.request.contextPath}/Frontend/img/team-1.jpg" alt="${instructor.name}">
                         <div class="card-body text-center">
                             <h5 class="card-title">${instructor.name}</h5>
                             <p class="card-text">${instructor.subject}</p>

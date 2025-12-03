@@ -29,12 +29,14 @@ public class CourseController {
     public String addCourse(
             @RequestParam("name") String name,
             @RequestParam("description") String description,
-            @RequestParam("category") CourseCategory category) {
+            @RequestParam("category") CourseCategory category,
+            @RequestParam("price") double price) {
 
         Course course = new Course();
         course.setName(name);
         course.setDescription(description);
         course.setCourseCategory(category);
+        course.setPrice(price);
 
         courseService.saveCourse(course);
 
@@ -53,7 +55,8 @@ public class CourseController {
     public String updatingCourse(@PathVariable Long id,
                                  @RequestParam("name") String name,
                                  @RequestParam("description") String description,
-                                 @RequestParam("category") CourseCategory category){
+                                 @RequestParam("category") CourseCategory category,
+                                 @RequestParam("price") double price){
 
         Course course = courseService.findCourseById(id)
                 .orElseThrow();
@@ -61,6 +64,7 @@ public class CourseController {
         course.setDescription(description);
         course.setCourseCategory(category);
         courseService.saveCourse(course);
+        course.setPrice(price);
         return "redirect:/admin/course/add?update=success";
     }
 

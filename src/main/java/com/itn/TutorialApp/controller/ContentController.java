@@ -58,7 +58,7 @@ public class ContentController {
         model.addAttribute("content", content);
         model.addAttribute("contentList", contentService.getAllContents());
         model.addAttribute("courseList", courseService.findAllCourse());
-        return "admin/course";
+        return "admin/content";
     }
 
     @PostMapping("admin/content/update/{id}")

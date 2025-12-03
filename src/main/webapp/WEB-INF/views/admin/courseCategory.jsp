@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -13,16 +13,124 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Admin - Dashboard</title>
+    <title>Admin - Course Category</title>
 
     <!-- Custom fonts for this template-->
     <link href="${pageContext.request.contextPath}/assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,600,700,800,900"
         rel="stylesheet">
 
     <!-- Custom styles for this template-->
     <link href="${pageContext.request.contextPath}/assets/css/sb-admin-2.min.css" rel="stylesheet">
+
+    <!-- Custom form styling -->
+    <style>
+        body {
+            background: #f4f6f9;
+            font-family: 'Nunito', sans-serif;
+        }
+
+        .form-container {
+            max-width: 700px;
+            margin: 50px auto;
+            background: #fff;
+            padding: 30px 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .form-container h2 {
+            font-weight: 700;
+            margin-bottom: 30px;
+            text-align: center;
+            color: #4e73df;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            color: #333;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: #4e73df;
+            box-shadow: 0 0 5px rgba(78, 115, 223, 0.5);
+            outline: none;
+        }
+
+        input[type="submit"] {
+            background-color: #1cc88a;
+            color: white;
+            border: none;
+            padding: 12px 40px;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #17a673;
+        }
+
+        hr {
+            border-top: 1px solid #ccc;
+        }
+
+        /* Table styling */
+        .table-container {
+            max-width: 1000px;
+            margin: 50px auto;
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        table th, table td {
+            padding: 12px 15px;
+            text-align: left;
+        }
+
+        table th {
+            background-color: #4e73df;
+            color: white;
+        }
+
+        table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        table a {
+            color: #1cc88a;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        table a:hover {
+            text-decoration: underline;
+        }
+    </style>
 
 </head>
 
@@ -32,79 +140,83 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-       <jsp:include page="sidebar.jsp" />
+        <jsp:include page="sidebar.jsp" />
         <!-- End of Sidebar -->
 
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column pl-4">
 
             <!-- Main Content -->
+            <div class="form-container">
+                <h2>
+                    <c:if test="${not empty category}">Update Course Category</c:if>
+                    <c:if test="${empty category}">Create Course Category</c:if>
+                </h2>
 
-    <h2>
-        <c:if test="${not empty category}">Update Course Category</c:if>
-        <c:if test="${empty category}">Create Course Category</c:if>
-    </h2>
+                <c:if test="${not empty category}">
+                    <form action="${pageContext.request.contextPath}/admin/category/update/${category.id}" method="POST">
+                </c:if>
+                <c:if test="${empty category}">
+                    <form action="${pageContext.request.contextPath}/admin/category/add" method="POST">
+                </c:if>
 
-    <c:if test="${not empty category}">
-        <form action="${pageContext.request.contextPath}/admin/category/update/${category.id}" method="POST">
-    </c:if>
-    <c:if test="${empty category}">
-        <form action="${pageContext.request.contextPath}/admin/category/add" method="POST">
-    </c:if>
+                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 
-        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+                    <div class="form-group">
+                        <label>Category Name:</label>
+                        <input type="text" name="name" value="${category.name}" required>
+                    </div>
 
-        <label>Category Name:</label><br>
-        <input type="text" name="name" value="${category.name}" required><br><br>
+                    <div class="form-group">
+                        <label>Type:</label>
+                        <input type="text" name="type" value="${category.type}" required>
+                    </div>
 
-        <label>Type:</label><br>
-        <input type="text" name="type" value="${category.type}" required><br><br>
+                    <div class="form-group">
+                        <label>Description:</label>
+                        <textarea name="description" rows="4" required>${category.description}</textarea>
+                    </div>
 
-        <label>Description:</label><br>
-        <textarea name="description" rows="4" cols="50" required>${category.description}</textarea><br><br>
+                    <div class="text-center">
+                        <input type="submit" value="<c:if test='${not empty category}'>Update</c:if><c:if test='${empty category}'>Submit</c:if>">
+                    </div>
+                </form>
+            </div>
 
-        <input type="submit" value="<c:if test='${not empty category}'>Update</c:if><c:if test='${empty category}'>Submit</c:if>">
-    </form>
-
-    <br>
-    <hr>
-    <br>
-
-    <!-- Category Table -->
-    <table border="1">
-        <thead>
-            <tr>
-                <th>Category Name</th>
-                <th>Type</th>
-                <th>Description</th>
-                <th>Edit</th>
-                <th>Delete</th>
-            </tr>
-        </thead>
-        <tbody>
-            <c:forEach var="category" items="${category_list}">
-                <tr>
-                    <td>${category.name}</td>
-                     <td>${category.type}</td>
-                    <td>${category.description}</td>
-                    <td><a href="${pageContext.request.contextPath}/admin/category/update/${category.id}">Edit</a></td>
-                    <td><a href="${pageContext.request.contextPath}/admin/category/delete/${category.id}">Delete</a></td>
-                </tr>
-            </c:forEach>
-        </tbody>
-    </table>
-
-            <!-- End of Main Content -->
+            <!-- Category Table -->
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Category Name</th>
+                            <th>Type</th>
+                            <th>Description</th>
+                            <th>Edit</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <c:forEach var="category" items="${category_list}">
+                            <tr>
+                                <td>${category.name}</td>
+                                <td>${category.type}</td>
+                                <td>${category.description}</td>
+                                <td><a href="${pageContext.request.contextPath}/admin/category/update/${category.id}">Edit</a></td>
+                                <td><a href="${pageContext.request.contextPath}/admin/category/delete/${category.id}">Delete</a></td>
+                            </tr>
+                        </c:forEach>
+                    </tbody>
+                </table>
+            </div>
 
             <!-- Footer -->
-            <footer class="sticky-footer bg-white">
+            <footer class="sticky-footer bg-white mt-5">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
                         <span>Copyright &copy; JCode Pvt Ltd. 2025</span>
                     </div>
                 </div>
             </footer>
-            <!-- End of Footer -->
 
         </div>
         <!-- End of Content Wrapper -->
@@ -146,13 +258,6 @@
 
     <!-- Custom scripts for all pages-->
     <script src="${pageContext.request.contextPath}/assets/js/sb-admin-2.min.js"></script>
-
-    <!-- Page level plugins -->
-    <script src="${pageContext.request.contextPath}/assets/vendor/chart.js/Chart.min.js"></script>
-
-    <!-- Page level custom scripts -->
-    <script src="${pageContext.request.contextPath}/assets/js/demo/chart-area-demo.js"></script>
-    <script src="${pageContext.request.contextPath}/assets/js/demo/chart-pie-demo.js"></script>
 
 </body>
 

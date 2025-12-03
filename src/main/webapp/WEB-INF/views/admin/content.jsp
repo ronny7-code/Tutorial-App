@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -24,6 +24,95 @@
     <!-- Custom styles for this template-->
     <link href="${pageContext.request.contextPath}/assets/css/sb-admin-2.min.css" rel="stylesheet">
 
+    <!-- Custom form styling -->
+    <style>
+        body {
+            background: #f4f6f9;
+        }
+        .form-container {
+            max-width: 800px;
+            margin: 40px auto;
+            background: #fff;
+            padding: 30px 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        .form-container h2 {
+            text-align: center;
+            color: #4e73df;
+            font-weight: 700;
+            margin-bottom: 30px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            font-weight: 600;
+            color: #333;
+        }
+        .form-group input[type="text"],
+        .form-group input[type="file"],
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 10px 15px;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: #4e73df;
+            box-shadow: 0 0 5px rgba(78, 115, 223, 0.5);
+            outline: none;
+        }
+        input[type="submit"] {
+            background-color: #1cc88a;
+            color: white;
+            border: none;
+            padding: 12px 40px;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        input[type="submit"]:hover {
+            background-color: #17a673;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 40px;
+            background: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        table th, table td {
+            padding: 12px 15px;
+            text-align: left;
+        }
+        table thead {
+            background-color: #4e73df;
+            color: #fff;
+        }
+        table tbody tr:nth-child(even) {
+            background-color: #f8f9fc;
+        }
+        table tbody tr:hover {
+            background-color: #e2e6f0;
+        }
+        table a {
+            color: #4e73df;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        table a:hover {
+            text-decoration: underline;
+        }
+    </style>
+
 </head>
 
 <body id="page-top">
@@ -32,89 +121,94 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-       <jsp:include page="sidebar.jsp" />
+        <jsp:include page="sidebar.jsp" />
         <!-- End of Sidebar -->
 
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column pl-4">
 
             <!-- Main Content -->
+            <div class="form-container">
+                <h2>
+                    <c:if test="${not empty course}">Update Content </c:if>
+                    <c:if test="${empty course}">Create Content </c:if>
+                </h2>
 
+                <c:if test="${not empty course}">
+                    <form action="${pageContext.request.contextPath}/admin/content/update/${course.id}?${_csrf.parameterName}=${_csrf.token}" method="POST" encType="multipart/form-data">
+                </c:if>
+                <c:if test="${empty course}">
+                    <form action="${pageContext.request.contextPath}/admin/content/add?${_csrf.parameterName}=${_csrf.token}" method="POST" encType="multipart/form-data">
+                </c:if>
 
-    <h2>
-        <c:if test="${not empty course}">Update Content </c:if>
-        <c:if test="${empty course}">Create Content </c:if>
-    </h2>
+                    <div class="form-group">
+                        <label>Content Name:</label>
+                        <input type="text" name="name" value="${content.name}" required>
+                    </div>
 
-    <c:if test="${not empty course}">
-        <form action="${pageContext.request.contextPath}/admin/content/update/${course.id}?${_csrf.parameterName}=${_csrf.token}" method="POST" encType="multipart/form-data">
-    </c:if>
-    <c:if test="${empty course}">
-        <form action="${pageContext.request.contextPath}/admin/content/add?${_csrf.parameterName}=${_csrf.token}" method="POST" encType="multipart/form-data">
-    </c:if>
+                    <div class="form-group">
+                        <label>Content Type:</label>
+                        <select name="type" required>
+                            <option>Select Content Type</option>
+                            <option value="WORD_DOC"> Microsoft Word Document </option>
+                            <option value="PDF"> PDF File </option>
+                            <option value="IMG"> Image File </option>
+                            <option value="VIDEO"> Video Recording </option>
+                        </select>
+                    </div>
 
-        <label>Content Name:</label><br>
-        <input type="text" name="name" value="${content.name}" required><br><br>
+                    <div class="form-group">
+                        <label>Description:</label>
+                        <textarea name="description" rows="4" required>${content.description}</textarea>
+                    </div>
 
-        <label>Content Type:</label><br>
-        <select  name="type" required>
-            <option>Select Content Type </option>
-            <option value="WORD_DOC"> Microsoft Word Document </option>
-            <option value="PDF"> PDF File </option>
-            <option value="IMG"> Image File </option>
-            <option value="VIDEO"> Video Recording </option>
-        </select>
-        <br> <br>
-        <label>Description:</label><br>
-        <textarea name="description" rows="4" cols="50" required>${content.description}</textarea>
-        <br><br>
-        <label>Course List:</label><br>
-         <select  name="course" required>
-          <option>Courses</option>
-         <c:forEach items="${courseList}" var="courses">
-          <option value="${courses.id}"> ${courses.name} </option>
-         </c:forEach>
-         </select>
-         <br> <br>
-                <label>Select a file:</label><br>
-                <input type="file" name="file" placeholder="Select a file to upload.." required>
+                    <div class="form-group">
+                        <label>Course List:</label>
+                        <select name="course" required>
+                            <option>Courses</option>
+                            <c:forEach items="${courseList}" var="courses">
+                                <option value="${courses.id}">${courses.name}</option>
+                            </c:forEach>
+                        </select>
+                    </div>
 
-  <br> <br>
-        <input type="submit" value="<c:if test='${not empty content}'>Update</c:if><c:if test='${empty content}'>Submit</c:if>">
-    </form>
-    <br>
-    <hr>
-    <br>
+                    <div class="form-group">
+                        <label>Select a file:</label>
+                        <input type="file" name="file" placeholder="Select a file to upload.." required>
+                    </div>
 
-    <!-- Content Table -->
+                    <div class="text-center">
+                        <input type="submit" value="<c:if test='${not empty content}'>Update</c:if><c:if test='${empty content}'>Submit</c:if>">
+                    </div>
+                </form>
 
-    <table border="1">
-        <thead>
-            <tr>
-                <th>Content Name</th>
-                <th>Courses</th>
-                <th>Description</th>
-                <th>Edit</th>
-                <th>Delete</th>
-            </tr>
-        </thead>
-        <tbody>
-            <c:forEach var="contents" items="${contentList}">
-                <tr>
-                    <td>${contents.name}</td>
-                     <td>${contents.course.name}</td>
-                    <td>${contents.description}</td>
-                    <td><a href="${pageContext.request.contextPath}/admin/content/update/${course.id}">Edit</a></td>
-                    <td><a href="${pageContext.request.contextPath}/admin/content/delete/${course.id}">Delete</a></td>
-                </tr>
-            </c:forEach>
-        </tbody>
-    </table>
-
-            <!-- End of Main Content -->
+                <!-- Content Table -->
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Content Name</th>
+                            <th>Courses</th>
+                            <th>Description</th>
+                            <th>Edit</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <c:forEach var="contents" items="${contentList}">
+                            <tr>
+                                <td>${contents.name}</td>
+                                <td>${contents.course.name}</td>
+                                <td>${contents.description}</td>
+                                <td><a href="${pageContext.request.contextPath}/admin/content/update/${contents.id}">Edit</a></td>
+                                <td><a href="${pageContext.request.contextPath}/admin/content/delete/${contents.id}">Delete</a></td>
+                            </tr>
+                        </c:forEach>
+                    </tbody>
+                </table>
+            </div>
 
             <!-- Footer -->
-            <footer class="sticky-footer bg-white">
+            <footer class="sticky-footer bg-white mt-4">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
                         <span>Copyright &copy; JCode Pvt Ltd. 2025</span>
@@ -163,13 +257,6 @@
 
     <!-- Custom scripts for all pages-->
     <script src="${pageContext.request.contextPath}/assets/js/sb-admin-2.min.js"></script>
-
-    <!-- Page level plugins -->
-    <script src="${pageContext.request.contextPath}/assets/vendor/chart.js/Chart.min.js"></script>
-
-    <!-- Page level custom scripts -->
-    <script src="${pageContext.request.contextPath}/assets/js/demo/chart-area-demo.js"></script>
-    <script src="${pageContext.request.contextPath}/assets/js/demo/chart-pie-demo.js"></script>
 
 </body>
 

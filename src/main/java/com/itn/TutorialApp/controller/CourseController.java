@@ -48,6 +48,7 @@ public class CourseController {
         Course course = courseService.findCourseById(id).orElseThrow();
         model.addAttribute("course", course);
         model.addAttribute("category_list", courseService.findAllCourse());
+        model.addAttribute("categoryList", courseCategoryService.findAllCourseCategories());
         return "admin/course";
     }
 

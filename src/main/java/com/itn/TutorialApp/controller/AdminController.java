@@ -1,23 +1,21 @@
 package com.itn.TutorialApp.controller;
 
-import com.itn.TutorialApp.dao.AdminRepository;
 import com.itn.TutorialApp.dao.MessageFromUserRepository;
 import com.itn.TutorialApp.entity.Admin;
 import com.itn.TutorialApp.entity.AdminRole;
 import com.itn.TutorialApp.entity.MessageFromUser;
+import com.itn.TutorialApp.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class AdminController {
 
 	@Autowired
-	private AdminRepository adminRepository;
+	private AdminService adminService;
 
 	@Autowired
 	private MessageFromUserRepository messageRepo;
@@ -31,7 +29,8 @@ public class AdminController {
 	}
 
 	@GetMapping("/admin/add")
-	public String addNewAdmin() {
+	public String addNewAdmin(Model model) {
+		model.addAttribute("adminList", adminService.getAllAdmins());
 		return "admin/addAdmin";
 	}
 
@@ -54,7 +53,7 @@ public class AdminController {
 		admin.setPassword(passwordEncoder.encode(admin.getPassword()));
 
 		// 4️⃣ Save admin
-		adminRepository.save(admin);
+		adminService.addAdmin(admin);
 
 		// 5️⃣ Redirect with success message
 		return "redirect:/admin/add?success";
@@ -73,5 +72,59 @@ public class AdminController {
 		return "admin/messageFromUser";
 	}
 
+	@GetMapping("/admin/update/{id}")
+	public String updateAdmin(@PathVariable("id") Long id, Model model){
+		Admin admin = adminService.getAdminById(id).orElseThrow();
+		model.addAttribute("admin", admin);
+		model.addAttribute("adminList", adminService.getAllAdmins());
+		return "admin/addAdmin";
+	}
+
+	@PostMapping("/admin/update/{id}")
+	public String updateAdminInfo(
+			@PathVariable("id") Long id,
+			@RequestParam("name") String name,
+			@RequestParam("address") String address,
+			@RequestParam("gender") String gender,
+			@RequestParam("email") String email,
+			@RequestParam("phoneNumber") String phoneNumber,
+			@RequestParam("username") String username,
+			@RequestParam("password") String password,
+			@RequestParam("cPassword") String cPassword,
+			Model model
+	) {
+		// Fetch the existing admin
+		Admin admin = adminService.getAdminById(id).orElseThrow(() ->
+				new IllegalArgumentException("Admin not found with id: " + id)
+		);
+
+		// Check if password and confirm password match
+		if (!password.equals(cPassword)) {
+			model.addAttribute("admin", admin);
+			model.addAttribute("adminList", adminService.getAllAdmins());
+			model.addAttribute("error", "Password and Confirm Password do not match!");
+			return "admin/addAdmin";
+		}
+
+		// Update admin fields
+		admin.setName(name);
+		admin.setAddress(address);
+		admin.setGender(gender);
+		admin.setEmail(email);
+		admin.setPhoneNumber(phoneNumber);
+		admin.setUsername(username);
+		admin.setPassword(passwordEncoder.encode(admin.getPassword())); // ideally encode the password
+
+		// Save updated admin
+		adminService.addAdmin(admin);
+
+		return "redirect:/admin/add"; // redirect to admin list page or same page
+	}
+
+	@GetMapping("/admin/delete/{id}")
+	public String deleteAdmin(@PathVariable("id") Long id){
+		adminService.deleteAdminById(id);
+		return "redirect:/admin/add? adminDelete=success";
+	}
 
 }

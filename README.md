@@ -58,6 +58,7 @@ Most of the functionality is complete; content sections are left to finalize. Fe
    - Access in browser: `http://localhost:8080/`
 
 *⚠️ Important Notes*
+- There is a .sql file for the admin uncomment it and its configuration in application.properties when you run the project for the first time.
 - Ensure the **database exists** and credentials are correct before running the app.
 - Tables will be **auto-generated** using Spring JPA.
 - Admin and User accounts can be created manually in the DB or via registration forms.

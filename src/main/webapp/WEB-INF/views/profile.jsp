@@ -5,61 +5,90 @@
 
 <head>
   <meta charset="utf-8">
-      <title>eLearning - User Profile</title>
-      <meta content="width=device-width, initial-scale=1.0" name="viewport">
-      <meta content="Free HTML Templates" name="keywords">
-      <meta content="Free HTML Templates" name="description">
+  <title>eLearning - User Profile</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="Free HTML Templates" name="keywords">
+  <meta content="Free HTML Templates" name="description">
 
-      <!-- Favicon -->
-      <link href="${pageContext.request.contextPath}/Frontend/img/favicon.ico" rel="icon">
+  <!-- Favicon -->
+  <link href="${pageContext.request.contextPath}/Frontend/img/favicon.ico" rel="icon">
 
-      <!-- Google Web Fonts -->
-      <link rel="preconnect" href="https://fonts.gstatic.com">
-      <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <!-- Google Web Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
 
-      <!-- Font Awesome -->
-      <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
 
-      <!-- Libraries Stylesheet -->
-      <link href="${pageContext.request.contextPath}/Frontend/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+  <!-- Libraries Stylesheet -->
+  <link href="${pageContext.request.contextPath}/Frontend/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
 
-      <!-- Customized Bootstrap Stylesheet -->
-      <link href="${pageContext.request.contextPath}/Frontend/css/style.css" rel="stylesheet">
+  <!-- Customized Bootstrap Stylesheet -->
+  <link href="${pageContext.request.contextPath}/Frontend/css/style.css" rel="stylesheet">
 
-    <style>
-        body {
-            font-family: 'Open Sans', sans-serif;
-            background-color: #f8f9fa;
+  <style>
+    body {
+        font-family: 'Open Sans', sans-serif;
+        background-color: #f8f9fa;
+    }
+    .header-banner {
+        background-color: #007bff;
+        color: #fff;
+        padding: 80px 0 40px 0;
+        text-align: center;
+        border-radius: 0 0 20px 20px;
+    }
+    .header-banner h1 {
+        font-size: 2rem;
+        font-weight: 600;
+        margin-bottom: 10px;
+    }
+    .header-banner p {
+        font-size: 1.1rem;
+    }
+    .profile-card {
+        background: #fff;
+        border-radius: 15px;
+        padding: 20px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        text-align: center;
+        transition: transform 0.3s ease;
+    }
+    .profile-card:hover {
+        transform: translateY(-5px);
+    }
+    .profile-img {
+        width: 120px;
+        height: 120px;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 4px solid #007bff;
+        margin-bottom: 15px;
+    }
+    .info-panel {
+        background: #fff;
+        border-radius: 15px;
+        padding: 20px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    }
+    .info-panel .row {
+        margin-bottom: 10px;
+    }
+    .info-panel .font-weight-bold {
+        color: #007bff;
+    }
+    @media (max-width: 991px) {
+        .header-banner {
+            padding: 60px 0 30px 0;
         }
-        .profile-card {
-            background: #fff;
-            border-radius: 15px;
-            padding: 40px;
-            box-shadow: 0 4px 25px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
+        .header-banner h1 {
+            font-size: 1.6rem;
         }
-        .profile-card:hover {
-            transform: translateY(-5px);
+        .header-banner p {
+            font-size: 1rem;
         }
-        .profile-card .btn-primary {
-            padding: 10px 30px;
-            border-radius: 50px;
-        }
-        .profile-img {
-            width: 150px;
-            height: 150px;
-            object-fit: cover;
-            border-radius: 50%;
-            border: 5px solid #007bff;
-            margin-bottom: 20px;
-        }
-        .instructor-card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 10px;
-        }
-    </style>
+    }
+  </style>
 </head>
 
 <body>
@@ -68,7 +97,7 @@
 <div class="container-fluid p-0">
     <nav class="navbar navbar-expand-lg bg-white navbar-light py-3 py-lg-0 px-lg-5">
         <a href="${pageContext.request.contextPath}/user/profile" class="navbar-brand ml-lg-3">
-            <h1 class="m-0 text-uppercase text-primary"><i class="fa fa-book-reader mr-3"></i>eLearning Hub</h1>
+            <h1 class="m-0 text-uppercase text-primary"><i class="fa fa-book-reader mr-2"></i>eLearning Hub</h1>
         </a>
         <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
             <span class="navbar-toggler-icon"></span>
@@ -86,65 +115,63 @@
 </div>
 
 <!-- Header Banner -->
-<div class="container-fluid bg-primary py-5 mb-5">
-    <div class="container text-center py-5 text-white">
-        <h1 class="display-4">Welcome, ${user.firstName}</h1>
-        <p class="lead">Your Learning Profile & Recommendations</p>
-    </div>
+<div class="header-banner">
+    <h1>Welcome, ${user.firstName}</h1>
+    <p>Explore your learning profile and courses</p>
 </div>
 
-<!-- Profile Section -->
+<!-- Main Profile Section -->
 <div class="container py-5">
-    <div class="row justify-content-center">
-        <!-- Profile Card -->
+    <div class="row">
+        <!-- Left Profile Card -->
         <div class="col-lg-4 mb-4">
-            <div class="profile-card text-center">
+            <div class="profile-card">
                 <img src="${pageContext.request.contextPath}/Frontend/img/me.jpg" alt="Profile Picture" class="profile-img">
                 <h4 class="text-primary mb-1">${user.firstName} ${user.lastName}</h4>
-                <p class="text-muted mb-3">${user.username}</p>
+                <p class="text-muted mb-2">${user.username}</p>
                 <a href="${pageContext.request.contextPath}/user/profile/update/${user.id}" class="btn btn-primary btn-sm px-4 mb-2">Edit Profile</a>
                 <a href="${pageContext.request.contextPath}/logout" class="btn btn-danger btn-sm px-4">Logout</a>
             </div>
         </div>
 
-        <!-- Profile Details -->
+        <!-- Right Info Panel -->
         <div class="col-lg-8">
-            <div class="bg-light rounded p-4 shadow-sm">
+            <div class="info-panel">
                 <h4 class="text-primary mb-4">Profile Information</h4>
 
-                <div class="row mb-3">
+                <div class="row">
                     <div class="col-sm-4 font-weight-bold">Full Name:</div>
                     <div class="col-sm-8">${user.firstName} ${user.lastName}</div>
                 </div>
 
-                <div class="row mb-3">
+                <div class="row">
                     <div class="col-sm-4 font-weight-bold">Username:</div>
                     <div class="col-sm-8">${user.username}</div>
                 </div>
 
                 <c:if test="${not empty user.phoneNumber}">
-                    <div class="row mb-3">
+                    <div class="row">
                         <div class="col-sm-4 font-weight-bold">Phone:</div>
                         <div class="col-sm-8">${user.phoneNumber}</div>
                     </div>
                 </c:if>
 
                 <c:if test="${not empty user.address}">
-                    <div class="row mb-3">
+                    <div class="row">
                         <div class="col-sm-4 font-weight-bold">Address:</div>
                         <div class="col-sm-8">${user.address}</div>
                     </div>
                 </c:if>
 
                 <c:if test="${not empty user.gender}">
-                    <div class="row mb-3">
+                    <div class="row">
                         <div class="col-sm-4 font-weight-bold">Gender:</div>
                         <div class="col-sm-8">${user.gender}</div>
                     </div>
                 </c:if>
 
                 <c:if test="${not empty user.DOB}">
-                    <div class="row mb-3">
+                    <div class="row">
                         <div class="col-sm-4 font-weight-bold">Date of Birth:</div>
                         <div class="col-sm-8">${user.DOB}</div>
                     </div>
@@ -154,62 +181,7 @@
     </div>
 </div>
 
-<!-- Courses Section -->
-<div id="courses-section" class="container-fluid px-0 py-5">
-    <div class="row mx-0 justify-content-center pt-5">
-        <div class="col-lg-6">
-            <div class="section-title text-center position-relative mb-4">
-                <h6 class="d-inline-block position-relative text-secondary text-uppercase pb-2">Our Courses</h6>
-                <h1 class="display-4">New Releases Of Our Courses</h1>
-            </div>
-        </div>
-    </div>
-
-    <div class="owl-carousel courses-carousel">
-        <c:forEach items="${courseList}" var="course">
-            <div class="courses-item position-relative">
-                <img class="img-fluid" src="${pageContext.request.contextPath}/Frontend/img/courses-1.jpg" alt="">
-                <div class="courses-text">
-                    <h4 class="text-center text-white px-3">${course.name}</h4>
-                    <div class="border-top w-100 mt-3">
-                        <div class="d-flex justify-content-between p-4">
-                            <span class="text-white"><i class="fa fa-user mr-2"></i>${course.description}</span>
-                        </div>
-                    </div>
-                    <div class="w-100 bg-white text-center p-4">
-                        <a class="btn btn-primary" href="${pageContext.request.contextPath}/user/course/${course.id}">Course Detail</a>
-                    </div>
-                </div>
-            </div>
-        </c:forEach>
-    </div>
-</div>
-
-<!-- Instructors Section -->
-<div id="instructors-section" class="container py-5">
-    <div class="row justify-content-center mb-4">
-        <div class="col-lg-6 text-center">
-            <h6 class="text-secondary text-uppercase">Our Instructors</h6>
-            <h1 class="display-4">Meet Our Expert Instructors</h1>
-        </div>
-    </div>
-    <div class="row">
-        <c:forEach items="${instructorList}" var="instructor">
-            <div class="col-lg-3 col-md-4 mb-4">
-                <div class="card instructor-card shadow-sm">
-                    <img src="${pageContext.request.contextPath}/Frontend/img/me.jpg" alt="${instructor.name}">
-                    <div class="card-body text-center">
-                        <h5 class="card-title">${instructor.name}</h5>
-                        <p class="card-text">${instructor.subject}</p>
-                        <p class="text-muted">${instructor.email}</p>
-                    </div>
-                </div>
-            </div>
-        </c:forEach>
-    </div>
-</div>
-
-  <!-- Contact Start -->
+<!-- Contact Section -->
 <div id="contact-section">
     <div class="container-fluid py-5">
         <div class="container py-5">
@@ -231,7 +203,7 @@
                             </div>
                             <div class="mt-n1">
                                 <h4>Call Us</h4>
-                                <p class="m-0">+977 9741875904</p>
+                                <p class="m-0">+977 9800000000</p>
                             </div>
                         </div>
                         <div class="d-flex align-items-center">
@@ -240,7 +212,7 @@
                             </div>
                             <div class="mt-n1">
                                 <h4>Email Us</h4>
-                                <p class="m-0">bijay98813@gmail.com</p>
+                                <p class="m-0">eLearning@gmail.com</p>
                             </div>
                         </div>
                     </div>
@@ -250,38 +222,58 @@
                         <h6 class="d-inline-block position-relative text-secondary text-uppercase pb-2">Need Help?</h6>
                         <h1 class="display-4">Send Us A Message</h1>
                     </div>
+
+                    <!-- Success alert -->
+                    <c:if test="${param.messageSent == 'true'}">
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            Your message has been sent successfully!
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    </c:if>
+
                     <div class="contact-form">
-                        <form>
+                        <form action="${pageContext.request.contextPath}/contact/message" method="POST">
                             <div class="row">
                                 <div class="col-6 form-group">
-                                    <input type="text" class="form-control border-top-0 border-right-0 border-left-0 p-0" placeholder="Your Name" required="required">
+                                    <input type="text" class="form-control border-top-0 border-right-0 border-left-0 p-0"
+                                           name="name" placeholder="Your Name" required="required">
                                 </div>
                                 <div class="col-6 form-group">
-                                    <input type="email" class="form-control border-top-0 border-right-0 border-left-0 p-0" placeholder="Your Email" required="required">
+                                    <input type="email" class="form-control border-top-0 border-right-0 border-left-0 p-0"
+                                           name="email" placeholder="Your Email" required="required">
                                 </div>
                             </div>
+
                             <div class="form-group">
-                                <input type="text" class="form-control border-top-0 border-right-0 border-left-0 p-0" placeholder="Subject" required="required">
+                                <select class="form-control border-top-0 border-right-0 border-left-0 p-0"
+                                        name="subject" required="required"
+                                        style="width: 60%; max-width: 300px;">
+                                    <option value="" disabled selected>Select a Course</option>
+                                    <c:forEach var="courses" items="${courseList}">
+                                        <option value="${courses.name}">${courses.name}</option>
+                                    </c:forEach>
+                                </select>
                             </div>
+
                             <div class="form-group">
-                                <textarea class="form-control border-top-0 border-right-0 border-left-0 p-0" rows="5" placeholder="Message" required="required"></textarea>
+                                <textarea class="form-control border-top-0 border-right-0 border-left-0 p-0"
+                                          name="message" rows="5" placeholder="Message" required="required"></textarea>
                             </div>
+
                             <div>
                                 <button class="btn btn-primary py-3 px-5" type="submit">Send Message</button>
                             </div>
                         </form>
                     </div>
                 </div>
+
             </div>
         </div>
     </div>
 </div>
-    <!-- Contact End -->
-
 
 <!-- Footer -->
 <jsp:include page="footer.jsp"/>
-
 
 <!-- JavaScript Libraries -->
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -290,45 +282,6 @@
 <script src="${pageContext.request.contextPath}/Frontend/lib/waypoints/waypoints.min.js"></script>
 <script src="${pageContext.request.contextPath}/Frontend/lib/counterup/counterup.min.js"></script>
 <script src="${pageContext.request.contextPath}/Frontend/lib/owlcarousel/owl.carousel.min.js"></script>
-
-<!-- Page-specific JS -->
-<script>
-$(document).ready(function() {
-
-    // Owl Carousel for courses
-    $('.courses-carousel').owlCarousel({
-        loop: true,
-        margin: 30,
-        nav: true,
-        dots: false,
-        responsive: {
-            0: { items: 1 },
-            768: { items: 2 },
-            992: { items: 3 }
-        }
-    });
-
-    // Smooth scroll for internal links
-    $('a[href^="#"], .scroll-link').on('click', function(e) {
-        var target = this.hash;
-        if (target) {
-            e.preventDefault();
-
-            // Animate scroll
-            $('html, body').animate({
-                scrollTop: $(target).offset().top
-            }, 800);
-        }
-    });
-
-    // CounterUp (if you have counters on page)
-    $('.counter').counterUp({
-        delay: 10,
-        time: 1000
-    });
-
-});
-</script>
 
 <!-- Template Javascript -->
 <script src="${pageContext.request.contextPath}/Frontend/js/main.js"></script>

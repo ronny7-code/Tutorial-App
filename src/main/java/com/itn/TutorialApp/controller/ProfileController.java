@@ -20,15 +20,12 @@ public class ProfileController {
     @Autowired
     private CourseService courseService;
 
-    @Autowired
-    private InstructorService instructorService;
 
     // Show profile page
     @GetMapping("/user/profile")
     public String getUserProfile(Authentication authentication, Model model) {
 
         model.addAttribute("courseList", courseService.findAllCourse());
-        model.addAttribute("instructorList", instructorService.getAllInstructors());
 
         if (authentication != null && authentication.isAuthenticated()) {
             String username = authentication.getName();

@@ -27,11 +27,16 @@ public class HomeController {
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 
+	@Autowired
+	private InstructorService instructorService;
+
 
 	// Home page
 	@GetMapping({"/", "/home"})
 	public String getHomePage(Model model) {
 		model.addAttribute("courseList", courseService.findAllCourse());
+		model.addAttribute("instructorList", instructorService.getAllInstructors());
+
 		return "index";
 	}
 

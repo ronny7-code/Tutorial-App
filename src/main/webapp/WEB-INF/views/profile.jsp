@@ -106,7 +106,6 @@
             <div class="navbar-nav mx-auto py-0">
                 <a href="${pageContext.request.contextPath}/user/profile" class="nav-item nav-link active">Home</a>
                 <a href="#courses-section" class="nav-item nav-link">Courses</a>
-                <a href="#instructors-section" class="nav-item nav-link">Instructors</a>
                 <a href="#contact-section" class="nav-item nav-link">Contact</a>
             </div>
             <a href="${pageContext.request.contextPath}/logout" class="btn btn-danger py-2 px-4 d-none d-lg-block">Logout</a>

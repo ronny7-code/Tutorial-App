@@ -1,13 +1,17 @@
 package com.itn.TutorialApp.controller;
 
-import com.itn.TutorialApp.entity.Course;
-import com.itn.TutorialApp.entity.CourseCategory;
+import com.itn.TutorialApp.entity.*;
 import com.itn.TutorialApp.service.CourseCategoryService;
 import com.itn.TutorialApp.service.CourseService;
+import com.itn.TutorialApp.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.security.Principal;
+import java.time.LocalDate;
+import java.util.UUID;
 
 @Controller
 public class CourseController {
@@ -17,6 +21,9 @@ public class CourseController {
 
     @Autowired
     private CourseCategoryService courseCategoryService;
+
+    @Autowired
+    private UserService userService;
 
     @GetMapping({"/admin/course/add", "/admin/course/show"})
     public String getCourseForm(Model model){
@@ -86,4 +93,25 @@ public class CourseController {
         return "courseDetail";
     }
 
+    @GetMapping("user/enroll/{id}")
+    public String enrollCourse(@PathVariable("id") Long id, Principal principal){
+        Enrollment enrollment = new Enrollment();
+        enrollment.setUser(userService.findByUsername(principal.getName()));
+        enrollment.setCourse(courseService.findCourseById(id).orElse(new Course()));
+        enrollment.setEnrollDate(LocalDate.now());
+        enrollment.setStatus("PENDING");
+        enrollment.setPayAmount("1000");
+        enrollment.setPaymentMode("Esewa");
+        enrollment.setEnrollEnds(LocalDate.now().plusYears(1));
+
+        // Payment Model
+        EsewaPayment esewaPayment = new EsewaPayment();
+        esewaPayment.setAmount(100000L);
+        esewaPayment.setFailureUrl("http://localhost:7777/user/enroll_payment/esewa?failure=true");
+        esewaPayment.setSuccessUrl("http://localhost:7777/user/enroll_payment/esewa?success=true");
+        esewaPayment.setProductCode("EPAYTEST");
+        esewaPayment.setSignedFieldNames("total_amount,transaction_uuid,product_code");
+        esewaPayment.setTransactionUUID(UUID.randomUUID()+"_E_LEARNING");
+        return null;
+    }
 }
